@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 891c1eb54d07ed24f9a8facd4b09ebd0
+guid: 3dc8e08ab73cd31448d6108b3b4ebd00
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5109557033662234441
-    second: Obstancle_0
+      213: -3338749442709606003
+    second: Coin_0
   - first:
-      213: 5126231168247340020
-    second: Obstancle_1
+      213: 5848064539680731454
+    second: Coin_1
   - first:
-      213: 7527795823425580046
-    second: Obstancle_2
+      213: -2652133911391862278
+    second: Coin_2
   - first:
-      213: -4030260486004308561
-    second: Obstancle_3
+      213: 5522397121026081838
+    second: Coin_3
   - first:
-      213: -838728169321918112
-    second: Obstancle_4
+      213: 4786861022352539597
+    second: Coin_4
   - first:
-      213: -6484725058389171039
-    second: Obstancle_5
+      213: 5728404248119495573
+    second: Coin_5
+  - first:
+      213: -205620266705300115
+    second: Coin_6
+  - first:
+      213: 914892611379245800
+    second: Coin_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,127 +135,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Obstancle_0
+      name: Coin_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d81b24142116aa1d0800000000000000
+      internalID: -3338749442709606003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_1
       rect:
         serializedVersion: 2
         x: 8
-        y: 37
-        width: 18
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 2, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 94f390fec0bc8e640800000000000000
-      internalID: 5109557033662234441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Obstancle_1
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 41
-        width: 12
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4fb1beb6618042740800000000000000
-      internalID: 5126231168247340020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Obstancle_2
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 38
-        width: 16
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0c63fcda6a187860800000000000000
-      internalID: 7527795823425580046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Obstancle_3
-      rect:
-        serializedVersion: 2
-        x: 13
-        y: 7
-        width: 7
-        height: 20
-      alignment: 9
-      pivot: {x: 0.50669944, y: 0.12715201}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa58b63f073a118c0800000000000000
-      internalID: -4030260486004308561
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Obstancle_4
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 11
+        y: 0
         width: 8
-        height: 12
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 061147c7c2d3c54f0800000000000000
-      internalID: -838728169321918112
+      spriteID: e317a37e6bf782150800000000000000
+      internalID: 5848064539680731454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Obstancle_5
+      name: Coin_2
       rect:
         serializedVersion: 2
-        x: 70
-        y: 9
-        width: 20
-        height: 15
+        x: 16
+        y: 0
+        width: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a4a3acbae0a106a0800000000000000
-      internalID: -6484725058389171039
+      spriteID: af188ba524ab13bd0800000000000000
+      internalID: -2652133911391862278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin_3
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2446633cee73ac40800000000000000
+      internalID: 5522397121026081838
       vertices: []
       indices: 
       edges: []

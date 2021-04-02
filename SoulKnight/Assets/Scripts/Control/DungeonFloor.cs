@@ -20,7 +20,14 @@ public class DungeonFloor : MonoBehaviour
     //object
     public List<DungeonRoom> rooms;
     public List<GameObject> decoration;
-    public List<GameObject> msrObj;
+    private List<List<GameObject>> funcObj;
+    public List<GameObject> startObj;
+    public List<GameObject> monsterObj;
+    public List<GameObject> shopObj;
+    
+    public List<GameObject> chestObj;
+    public List<GameObject> bossObj;
+    public List<GameObject> portalObj;
     
     //behaviour
     /*  -Init()
@@ -29,10 +36,21 @@ public class DungeonFloor : MonoBehaviour
         -chracterEnterNewFloor()
         -chracterEnterNewArea()
     */
+    private void initFuncObj(){
+        funcObj = new List<List<GameObject>>();
+        funcObj.Add(startObj);
+        funcObj.Add(monsterObj);
+        funcObj.Add(shopObj);
+        funcObj.Add(chestObj);
+        funcObj.Add(bossObj);
+        funcObj.Add(portalObj);
+
+    }
     public void Start(){
         rooms = new List<DungeonRoom>();
         map = gameObject.GetComponent<CreateMap>();
         Init();
+        initFuncObj();
         createSketchMap();
         createDetailMap();
     }
@@ -76,7 +94,7 @@ public class DungeonFloor : MonoBehaviour
         positionOfRoom[x,y] = 0;
         numberOfRoomType[0] -= 1;
         DungeonRoom room = gameObject.AddComponent<DungeonRoom>();
-        room.Init(baseSizeOfRoom,new Vector2Int(0,0),level,0,null);
+        room.Init(baseSizeOfRoom,new Vector2Int(0,0),level,0,funcObj[0]);
         rooms.Add(room);
 
         for(int i = 1; i < 6;i++){
@@ -95,21 +113,17 @@ public class DungeonFloor : MonoBehaviour
                     if(i < 4){
                         positionOfRoom[x,y] = i;
                         room = gameObject.AddComponent<DungeonRoom>();
-                        room.Init(new Vector2Int(5,5),new Vector2Int(x,y) - rootCoordinates,level,(DungeonRoom.TypeOfRoom)i,msrObj);
-                        rooms.Add(room);
-                        numberOfRoomType[i] -= 1;
+                        
                     }
                     else{
                         if(Mathf.Abs(x-rootCoordinates.x) + Mathf.Abs(y-rootCoordinates.y) > 1.5){
                             positionOfRoom[x,y] = i;
                             room = gameObject.AddComponent<DungeonRoom>();
-                            room.Init(new Vector2Int(5,5),new Vector2Int(x,y) - rootCoordinates,level,(DungeonRoom.TypeOfRoom)i,null);
-                            rooms.Add(room);
-                            numberOfRoomType[i] -= 1;
                         }
-                        continue;
                     }
-                    
+                    room.Init(new Vector2Int(5,5),new Vector2Int(x,y) - rootCoordinates,level,(TypeOfRoom)i,funcObj[i]);
+                    rooms.Add(room);
+                    numberOfRoomType[i] -= 1;
                 }
             }
         }

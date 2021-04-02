@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +13,7 @@ public class OrangePlayer : RigidbodyObject
         rb = gameObject.GetComponent<Rigidbody2D>();
         gameObject.layer =LayerMask.NameToLayer("Player");
         layer = LayerMask.GetMask("Player");
-        Debug.Log(layer);
+        //Debug.Log(layer);
         initPlayerScale = this.gameObject.transform.localScale;
         initGunScale = gun.transform.localScale;
     }

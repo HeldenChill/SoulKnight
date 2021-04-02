@@ -92,6 +92,13 @@ public class CreateMap : MonoBehaviour
         return doors;
     }
 
+    public List<GameObject> createChestRoom(DungeonRoom room){
+        List<GameObject> chest = new List<GameObject>();
+        Vector3 positionOfChest = (Vector3)globalPosition(room.gridPosition) + new Vector3(0.08f,0.08f,0);
+        chest.Add(Instantiate(room.functionalObj[0],positionOfChest,Quaternion.identity));
+        return chest;
+    }
+
     public Vector2 globalPosition(Vector2Int postion){
         return worldTile.CellToWorld((Vector3Int)postion) + worldTile.cellSize * gameObject.transform.localScale.x / 2;
     }

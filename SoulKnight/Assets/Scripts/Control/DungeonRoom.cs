@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DungeonRoom : MonoBehaviour
+public enum TypeOfRoom
 {
-    public enum TypeOfRoom
-    {
         Start = 0,
         Monster = 1,
         Shop = 2,
@@ -15,6 +13,9 @@ public class DungeonRoom : MonoBehaviour
         Portal = 5
 
     }
+public class DungeonRoom : MonoBehaviour
+{
+    
     // attribute:
     /*  -sizeOfRoom
         -position
@@ -91,6 +92,9 @@ public class DungeonRoom : MonoBehaviour
         if(type == TypeOfRoom.Monster || type == TypeOfRoom.Boss){
             functionalObj = map.createMosterRoom(this);
             openRoom();
+        }
+        else if(type == TypeOfRoom.Chest){
+            functionalObj = map.createChestRoom(this);
         }
     }
 
