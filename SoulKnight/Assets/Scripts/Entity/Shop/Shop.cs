@@ -17,19 +17,19 @@ public class Shop : MonoBehaviour
     {
         if(isTrigger){
             if(tables[1].IsTouchingLayers(OrangePlayer.layer)){
-                Debug.Log("Table1");
+                Debug.Log("Shop:Table1");
             }
 
             if(tables[2].IsTouchingLayers(OrangePlayer.layer)){
-                Debug.Log("Table2");
+                Debug.Log("Shop:Table2");
             }
 
             if(tables[3].IsTouchingLayers(OrangePlayer.layer)){
-                Debug.Log("Table3");
+                Debug.Log("Shop:Table3");
             }
 
             if(tables[4].IsTouchingLayers(OrangePlayer.layer)){
-                Debug.Log("Table4");
+                Debug.Log("Shop:Table4");
             }
         }
     }

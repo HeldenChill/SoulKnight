@@ -106,6 +106,13 @@ public class CreateMap : MonoBehaviour
         return shopsObj;
     }
 
+    public List<GameObject> createPortalRoom(DungeonRoom room){
+        List<GameObject> portalsObj = new List<GameObject>();
+        Vector3 positionOfPortal = (Vector3)globalPosition(room.gridPosition) ;
+        portalsObj.Add(Instantiate(room.functionalObj[0],positionOfPortal,Quaternion.identity));
+        return portalsObj;
+    }
+
     public Vector2 globalPosition(Vector2Int postion){
         return worldTile.CellToWorld((Vector3Int)postion) + worldTile.cellSize * gameObject.transform.localScale.x / 2;
     }

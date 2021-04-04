@@ -99,6 +99,9 @@ public class DungeonRoom : MonoBehaviour
         else if(type == TypeOfRoom.Shop){
             functionalObj = map.createShopRoom(this);
         }
+        else if(type == TypeOfRoom.Portal){
+            functionalObj = map.createPortalRoom(this);
+        }
     }
 
     public void openRoom(){

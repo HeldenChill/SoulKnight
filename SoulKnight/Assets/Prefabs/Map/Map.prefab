@@ -340,8 +340,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1595893959
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 5215706393467424049}
   - component: {fileID: 5215706393467424050}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,5 +485,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 0}
-  rooms: []
   numberOfRoom: 0
+  rooms: []
+  decoration:
+  - {fileID: 7285056487649518602, guid: 85ab8b39ebf276c42972e1ebfc1bca79, type: 3}
+  - {fileID: 5714840728101137214, guid: 3ea2b4d96c874d840bd02dfacdc8056f, type: 3}
+  startObj: []
+  monsterObj:
+  - {fileID: 3907063975653033443, guid: bdca303907d398a47b5e91ecec890919, type: 3}
+  shopObj:
+  - {fileID: 26521263993971260, guid: d90c97ac3ef409e4c9679340af3d6a27, type: 3}
+  chestObj:
+  - {fileID: 2421467729456388927, guid: 4e113f9d47017c541b8482d75b144676, type: 3}
+  bossObj:
+  - {fileID: 3907063975653033443, guid: bdca303907d398a47b5e91ecec890919, type: 3}
+  portalObj:
+  - {fileID: 1422348130756540936, guid: 8be6ba4eaa4d8f4488e066266d4da674, type: 3}
