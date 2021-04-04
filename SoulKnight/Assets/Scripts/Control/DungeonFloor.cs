@@ -12,7 +12,7 @@ public class DungeonFloor : MonoBehaviour
     int level;
     int[,] positionOfRoom;
     Vector2Int rootCoordinates;
-    Vector2Int baseSizeOfRoom = new Vector2Int(8,8);
+    Vector2Int baseSizeOfRoom = new Vector2Int(10,10);
     int numberOfArea;
     public CreateMap map;
     public int numberOfRoom;
@@ -71,7 +71,7 @@ public class DungeonFloor : MonoBehaviour
 
         numberOfRoomType[0] = 1;
         numberOfRoomType[1] = Random.Range(level+2,level+4);
-        numberOfRoomType[2] = Random.Range(level-1,level+1);
+        numberOfRoomType[2] = Random.Range(level,level+1);
         numberOfRoomType[3] = Random.Range(level,level+2);
         if(numberOfArea == 0){
             numberOfRoomType[4] = 1;

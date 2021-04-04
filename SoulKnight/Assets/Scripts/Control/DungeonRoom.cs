@@ -74,8 +74,8 @@ public class DungeonRoom : MonoBehaviour
             size += new Vector2Int(15,15);    
         }
         else if(this.type == TypeOfRoom.Shop){
-            addSize = Random.Range(5,8);
-            size += new Vector2Int(addSize,addSize);
+            addSize = Random.Range(10,12);
+            size += new Vector2Int(addSize,addSize-4);
         }
         else if(this.type == TypeOfRoom.Chest){
             size += new Vector2Int(2,2);
@@ -95,6 +95,9 @@ public class DungeonRoom : MonoBehaviour
         }
         else if(type == TypeOfRoom.Chest){
             functionalObj = map.createChestRoom(this);
+        }
+        else if(type == TypeOfRoom.Shop){
+            functionalObj = map.createShopRoom(this);
         }
     }
 

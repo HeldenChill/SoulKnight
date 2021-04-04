@@ -8,7 +8,7 @@ public class CreateMap : MonoBehaviour
     public RuleTile tile;
     public Tilemap worldTile;
     
-    int lengthOfLobby = 20;
+    int lengthOfLobby = 25;
     int widthOfLobby = 3;
     void Start(){
         createMap();
@@ -93,10 +93,17 @@ public class CreateMap : MonoBehaviour
     }
 
     public List<GameObject> createChestRoom(DungeonRoom room){
-        List<GameObject> chest = new List<GameObject>();
-        Vector3 positionOfChest = (Vector3)globalPosition(room.gridPosition) + new Vector3(0.08f,0.08f,0);
-        chest.Add(Instantiate(room.functionalObj[0],positionOfChest,Quaternion.identity));
-        return chest;
+        List<GameObject> chests = new List<GameObject>();
+        Vector3 positionOfChest = (Vector3)globalPosition(room.gridPosition);
+        chests.Add(Instantiate(room.functionalObj[0],positionOfChest,Quaternion.identity));
+        return chests;
+    }
+
+    public List<GameObject> createShopRoom(DungeonRoom room){
+        List<GameObject> shopsObj = new List<GameObject>();
+        Vector3 positionOfShop = (Vector3)globalPosition(room.gridPosition) + new Vector3(0,worldTile.cellSize.x * gameObject.transform.localScale.x * 4,0) ;
+        shopsObj.Add(Instantiate(room.functionalObj[0],positionOfShop,Quaternion.identity));
+        return shopsObj;
     }
 
     public Vector2 globalPosition(Vector2Int postion){

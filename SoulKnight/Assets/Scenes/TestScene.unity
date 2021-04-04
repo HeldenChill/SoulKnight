@@ -159,6 +159,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3784495616054502695, guid: 7fb67f50d3c03754c827bba596368502,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.43
+      objectReference: {fileID: 0}
     - target: {fileID: 3784495616436439106, guid: 7fb67f50d3c03754c827bba596368502,
         type: 3}
       propertyPath: m_Name
@@ -490,6 +495,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 5215706393467424048, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
+        type: 3}
+      propertyPath: m_CellSize.x
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 5215706393467424050, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
         type: 3}
       propertyPath: decoration.Array.size
@@ -513,6 +523,11 @@ PrefabInstance:
     - target: {fileID: 5215706393467424050, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
         type: 3}
       propertyPath: bossObj.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215706393467424050, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
+        type: 3}
+      propertyPath: shopObj.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5215706393467424050, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
@@ -555,6 +570,12 @@ PrefabInstance:
       propertyPath: bossObj.Array.data[0]
       value: 
       objectReference: {fileID: 3907063975653033443, guid: bdca303907d398a47b5e91ecec890919,
+        type: 3}
+    - target: {fileID: 5215706393467424050, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
+        type: 3}
+      propertyPath: shopObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 26521263993971260, guid: d90c97ac3ef409e4c9679340af3d6a27,
         type: 3}
     - target: {fileID: 5215706393467424051, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
         type: 3}
