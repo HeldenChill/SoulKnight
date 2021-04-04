@@ -512,6 +512,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215706393467424050, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
         type: 3}
+      propertyPath: bossObj.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215706393467424050, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
+        type: 3}
       propertyPath: decoration.Array.data[0]
       value: 
       objectReference: {fileID: 7285056487649518602, guid: 85ab8b39ebf276c42972e1ebfc1bca79,
@@ -544,6 +549,12 @@ PrefabInstance:
       propertyPath: chestObj.Array.data[0]
       value: 
       objectReference: {fileID: 2421467729456388927, guid: 4e113f9d47017c541b8482d75b144676,
+        type: 3}
+    - target: {fileID: 5215706393467424050, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
+        type: 3}
+      propertyPath: bossObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 3907063975653033443, guid: bdca303907d398a47b5e91ecec890919,
         type: 3}
     - target: {fileID: 5215706393467424051, guid: 268de9da9b15ca24eb9b02cb2e7c7243,
         type: 3}

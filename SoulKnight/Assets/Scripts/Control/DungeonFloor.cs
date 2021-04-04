@@ -38,13 +38,15 @@ public class DungeonFloor : MonoBehaviour
     */
     private void initFuncObj(){
         funcObj = new List<List<GameObject>>();
-        funcObj.Add(startObj);
-        funcObj.Add(monsterObj);
-        funcObj.Add(shopObj);
-        funcObj.Add(chestObj);
-        funcObj.Add(bossObj);
-        funcObj.Add(portalObj);
-
+        for(int i = 0; i < 6; i++){
+            funcObj.Add(null);
+        }
+        funcObj[(int)TypeOfRoom.Start] = startObj;
+        funcObj[(int)TypeOfRoom.Monster] = monsterObj;
+        funcObj[(int)TypeOfRoom.Shop] = shopObj;
+        funcObj[(int)TypeOfRoom.Chest] = chestObj;
+        funcObj[(int)TypeOfRoom.Boss] = bossObj;
+        funcObj[(int)TypeOfRoom.Portal] = portalObj;
     }
     public void Start(){
         rooms = new List<DungeonRoom>();
