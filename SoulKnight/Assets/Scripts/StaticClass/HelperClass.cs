@@ -49,5 +49,38 @@ public static class HelperClass
         initialScale.x *= -1;
         gameObject.transform.localScale = initialScale;
     }
+
+    //Random for AI Enemy
+    public static Vector2 getRandomVector2D(bool yGreater0,bool xGreater0){
+        float valX = Random.Range(-1f,1f);
+        float valY = Random.Range(1f,1f);
+        
+        if(xGreater0)
+            while(valX < 0)
+                valX = Random.Range(-1f,1f);
+        else
+            while(valX >= 0)
+                valX = Random.Range(-1f,1f);
+                
+            
+
+        if(yGreater0)
+            while(valY < 0)
+                valY = Random.Range(-1f,1f);
+        else
+            while(valY >= 0)
+                valY = Random.Range(-1f,1f); 
+        return new Vector2(valX,valY).normalized;
+    }
+
+    public static Vector2 getRandomVector2D(){
+        float valX = Random.Range(-1f,1f);
+        float valY = Random.Range(-1f,1f);     
+        return new Vector2(valX,valY).normalized;
+    }
+    public static Vector2 getRandomDirection(float min = 0,float max = 360){
+        float angle = Random.Range(min,max);
+        return angleToVector(angle);
+    }
     
 }

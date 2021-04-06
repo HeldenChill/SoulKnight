@@ -29,17 +29,6 @@ public class Timer : MonoBehaviour
         lastRoutine = StartCoroutine(subtractTime());
     }
 
-    public void timeStop(){
-        timerIsStart = false;
-        timeRemaining = 0;
-        StopCoroutine(lastRoutine);
-    }
-    private void timeOut(){
-        if(TimeOut != null){
-            TimeOut();
-        }
-    }
-
     private IEnumerator subtractTime(){
         while(timeRemaining > 0){
             //Debug.Log(timeRemaining);
@@ -49,5 +38,15 @@ public class Timer : MonoBehaviour
 
         timeOut();
         timeStop();
+    }
+    public void timeStop(){
+        timerIsStart = false;
+        timeRemaining = 0;
+        StopCoroutine(lastRoutine);
+    }
+    private void timeOut(){
+        if(TimeOut != null){
+            TimeOut();
+        }
     }
 } 

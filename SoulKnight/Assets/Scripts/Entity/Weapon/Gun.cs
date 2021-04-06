@@ -2,25 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : Weapon
 {
     public Transform firePoint;
     public GameObject bullet;
-    public float reloadTime = 1f;
+    public float reloadTime = 0.3f;
+
+    private bool canShoot = true;
     Timer timer;
     void Start(){
         timer = gameObject.AddComponent<Timer>();
     }
-    public void attack(){
+    public override void attack(Vector2 target){
         if(!timer.TimerIsStart){
-            mechanism();
+            mechanism(target);
             timer.timeStart(reloadTime);
         }   
     }
 
-    protected void mechanism(){
+    public override void mechanism(Vector2 target){
         Vector2 firePointPos = firePoint.transform.position;
-        Vector2 fireDirection = (HelperClass.getMouse2DPosition() - (Vector2)(gameObject.transform.position)).normalized;
+        Vector2 fireDirection = gameObject.transform.right;
         GameObject instBullet = Instantiate(bullet,firePointPos,HelperClass.getQuaternion2Vector(Vector2.right,fireDirection));
         instBullet.GetComponent<Bullet>().fire();
     }
