@@ -15,6 +15,7 @@ public abstract class Bullet : RigidbodyObject
     {
         move();
     }
+    public abstract void setLayer(int layer);
     public abstract void property();
     public abstract void fire();
 }

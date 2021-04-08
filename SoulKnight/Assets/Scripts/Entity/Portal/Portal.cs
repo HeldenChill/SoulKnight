@@ -14,7 +14,7 @@ public class Portal : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(areaOfPortal.IsTouchingLayers(OrangePlayer.layer)){
+        if(areaOfPortal.IsTouchingLayers(OrangePlayer.layerMask)){
             Debug.Log("Portal:Teleport.");
         }
     }

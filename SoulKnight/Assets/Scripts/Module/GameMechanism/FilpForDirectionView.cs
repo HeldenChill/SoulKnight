@@ -14,11 +14,12 @@ public class FilpForDirectionView : MonoBehaviour
         {
             weapon = value;
             initWeaponScale = weapon.transform.localScale;
+            initWeaponScale = new Vector3(Mathf.Abs(initWeaponScale.x),Mathf.Abs(initWeaponScale.y),initWeaponScale.z);
         }
     }
-    void Start(){
+    void Awake(){
         initPlayerScale = transform.localScale;
-        Weapon = GameMechanism.findWeapon(this.gameObject);
+        Weapon = GameHelper.findWeapon(this.gameObject);
     }
 
     public void lookAt(Vector2 face,Vector2 point){

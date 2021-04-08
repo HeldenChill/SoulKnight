@@ -6,6 +6,7 @@ public class Type1Bullet : Bullet
 {
 
     public GameObject impactEffect;
+    
     public override void Start()
     {
         base.Start();
@@ -18,6 +19,9 @@ public class Type1Bullet : Bullet
         move();
     }
 
+    public override void setLayer(int layer){
+        this.gameObject.layer = layer;
+    }
     public override void property()
     {
         

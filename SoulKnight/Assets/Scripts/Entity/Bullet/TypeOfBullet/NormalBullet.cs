@@ -26,11 +26,17 @@ public class NormalBullet : Bullet
         move();
     }
 
+    public override void setLayer(int layer)
+    {
+        throw new System.NotImplementedException();
+    }
+
     protected override Vector2 move()
     {
         rb.velocity = velocity;
         return velocity;
     }
+    
 
     protected override void getDamage(int damage)
     {

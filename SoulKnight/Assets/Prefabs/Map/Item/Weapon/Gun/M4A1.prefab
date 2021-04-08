@@ -41,7 +41,9 @@ GameObject:
   - component: {fileID: 2067686366192774014}
   - component: {fileID: 2067686366192774009}
   - component: {fileID: 6260457848207468281}
-  m_Layer: 0
+  - component: {fileID: 7188651368608015467}
+  - component: {fileID: 5800203881404777843}
+  m_Layer: 13
   m_Name: M4A1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,9 +127,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20f7d7a86a8db14cbdb8b382290969a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contactPlayer: {fileID: 0}
+  changeWeapon: {fileID: 0}
   firePoint: {fileID: 2067686366175566710}
   bullet: {fileID: 1403011178226502074, guid: a9dae6d1c7d41b74a8d28c32f35cccfe, type: 3}
   reloadTime: 0.1
+--- !u!114 &7188651368608015467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067686366192774015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7308ee51206dc524e845a8cdad7b2015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeOfArea: {x: 2.5, y: 2.5}
+--- !u!114 &5800203881404777843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067686366192774015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3d518cd95c8d24399a3676a2f7b7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2067686367783157193
 GameObject:
   m_ObjectHideFlags: 0

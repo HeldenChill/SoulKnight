@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 5459922695670682054}
   - component: {fileID: 5459922695670682104}
   - component: {fileID: 4443259221298194329}
-  m_Layer: 0
+  - component: {fileID: 4548047348219223660}
+  m_Layer: 12
   m_Name: Enemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,9 +73,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04808724, y: -0.27627954}
-  m_Size: {x: 0.9776263, y: 0.77016556}
-  m_Direction: 1
+  m_Offset: {x: -0.038359016, y: -0.11260964}
+  m_Size: {x: 0.8145803, y: 1.09751}
+  m_Direction: 0
 --- !u!114 &5459922695670682105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7564fd836f6ea4c9c3e8e2c744ab62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomInID: -1
   speed: 5
+  hp: 20
 --- !u!114 &5459922695670682054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +127,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f098aac0df7aac4b954a239b1a78661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &4548047348219223660
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5459922695670682050}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.036501065, y: -0.11409484}
+  m_Size: {x: 0.95626366, y: 1.2281896}
+  m_Direction: 0
 --- !u!1 &5459922696772847355
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: M4A1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6260457848207468281, guid: 04676c2d88eb79840957d57db22e31e3,
+        type: 3}
+      propertyPath: reloadTime
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04676c2d88eb79840957d57db22e31e3, type: 3}

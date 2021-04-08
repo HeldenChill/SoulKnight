@@ -18,7 +18,7 @@ public class SensorModule : MonoBehaviour
     public float Radius{
         get{return radius;}
     }
-    void Start(){
+    void Awake(){
         sensor = new RaycastHit2D[4];
     }
     void FixedUpdate()

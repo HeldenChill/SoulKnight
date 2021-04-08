@@ -18,6 +18,7 @@ public class DungeonFloor : MonoBehaviour
     public int numberOfRoom;
     private int[] numberOfRoomType;
     //object
+    public List<GameObject> monster;
     public List<DungeonRoom> rooms;
     public List<GameObject> decoration;
     private List<List<GameObject>> funcObj;
@@ -36,18 +37,7 @@ public class DungeonFloor : MonoBehaviour
         -chracterEnterNewFloor()
         -chracterEnterNewArea()
     */
-    private void initFuncObj(){
-        funcObj = new List<List<GameObject>>();
-        for(int i = 0; i < 6; i++){
-            funcObj.Add(null);
-        }
-        funcObj[(int)TypeOfRoom.Start] = startObj;
-        funcObj[(int)TypeOfRoom.Monster] = monsterObj;
-        funcObj[(int)TypeOfRoom.Shop] = shopObj;
-        funcObj[(int)TypeOfRoom.Chest] = chestObj;
-        funcObj[(int)TypeOfRoom.Boss] = bossObj;
-        funcObj[(int)TypeOfRoom.Portal] = portalObj;
-    }
+    
     public void Start(){
         rooms = new List<DungeonRoom>();
         map = gameObject.GetComponent<CreateMap>();
@@ -55,6 +45,7 @@ public class DungeonFloor : MonoBehaviour
         initFuncObj();
         createSketchMap();
         createDetailMap();
+        createEnemy();
     }
     public void Init(int level = 1){
         this.level = level;
@@ -148,6 +139,33 @@ public class DungeonFloor : MonoBehaviour
     public void chracterEnterNewFloor(){
 
     }
+
+    public void createEnemy(){
+        int numOfMonster = 3;
+        foreach(var room in rooms){
+            if(room.type == TypeOfRoom.Monster){
+                for(int i = 0; i < numOfMonster; i++){
+                    Vector2Int pos = GameHelper.pickRandomPosition(room.gridPosition,room.size - new Vector2Int(1,1));
+                    Vector2 globalPos = map.globalPosition(pos);
+                    GameObject enemy = Instantiate(monster[0],globalPos,Quaternion.identity);
+                    enemy.GetComponent<AIEnemyBrain>().roomInID = room.id;
+                    room.numOfEnemy = numOfMonster;
+                }
+            }
+        }
+    }
+    private void initFuncObj(){
+        funcObj = new List<List<GameObject>>();
+        for(int i = 0; i < 6; i++){
+            funcObj.Add(null);
+        }
+        funcObj[(int)TypeOfRoom.Start] = startObj;
+        funcObj[(int)TypeOfRoom.Monster] = monsterObj;
+        funcObj[(int)TypeOfRoom.Shop] = shopObj;
+        funcObj[(int)TypeOfRoom.Chest] = chestObj;
+        funcObj[(int)TypeOfRoom.Boss] = bossObj;
+        funcObj[(int)TypeOfRoom.Portal] = portalObj;
+    }
     private void updateLobbyForRoom(){
         foreach(var room in rooms){
             Vector2Int pos = room.position + rootCoordinates;
@@ -168,6 +186,7 @@ public class DungeonFloor : MonoBehaviour
             }
         }
     }
+
     private void createLobby(DungeonRoom room){
         Vector2Int pos = room.position + rootCoordinates;
         if(room.haveLobby[0]){

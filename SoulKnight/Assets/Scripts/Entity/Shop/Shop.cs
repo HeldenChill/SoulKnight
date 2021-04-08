@@ -5,31 +5,36 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Collider2D[] tables;
-    public bool isTrigger = true;
+    public GameObject[] items;
+    private GameObject[] tables;
+    private Vector3[] positionsOfTable;
+    private bool isTrigger = true;
     void Start()
     {
-        tables = gameObject.GetComponents<Collider2D>();
+        tables = new GameObject[5];
+        positionsOfTable = new Vector3[5];
+        for(int i = 1; i <= 4; i++){
+            tables[i] = transform.GetChild(i).gameObject;
+            positionsOfTable[i] = transform.GetChild(i).transform.position;
+            if(items[i-1] != null){
+                items[i-1] = Instantiate(items[i-1],positionsOfTable[i],Quaternion.identity);
+                items[i-1].GetComponent<IItem>().setActiveContact(false);
+            }
+                
+        }
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        if(isTrigger){
-            if(tables[1].IsTouchingLayers(OrangePlayer.layer)){
-                Debug.Log("Shop:Table1");
-            }
-
-            if(tables[2].IsTouchingLayers(OrangePlayer.layer)){
-                Debug.Log("Shop:Table2");
-            }
-
-            if(tables[3].IsTouchingLayers(OrangePlayer.layer)){
-                Debug.Log("Shop:Table3");
-            }
-
-            if(tables[4].IsTouchingLayers(OrangePlayer.layer)){
-                Debug.Log("Shop:Table4");
+    public void playerBuyItem(int idTable,GameObject player){
+        if(player != null && idTable >= 1 && idTable <= 4){
+            int cost = items[idTable - 1].GetComponent<IItem>().getValue();
+            if(player.GetComponent<OrangePlayer>().Money > cost){
+                player.GetComponent<OrangePlayer>().Money -= cost;
+                items[idTable - 1].GetComponent<IItem>().setActiveContact(true);
+                tables[idTable].GetComponent<IItem>().setActiveContact(false);
+            }   
+            else{
+                Debug.Log("Not enough Money");
             }
         }
     }

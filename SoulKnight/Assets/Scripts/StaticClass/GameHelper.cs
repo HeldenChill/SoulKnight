@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameMechanism
+public static class GameHelper
 {
     public static GameObject findWeapon(GameObject gameObject){
         GameObject weapon = null;
@@ -17,6 +17,12 @@ public static class GameMechanism
             Debug.Log("No gun have found in " + gameObject.name);
         }
         return weapon;
+    }
+
+    public static Vector2Int pickRandomPosition(Vector2Int center,Vector2Int size){
+        int valX = Random.Range(center.x - size.x,center.x + size.x + 1);
+        int valY = Random.Range(center.y - size.y,center.y + size.y + 1);
+        return new Vector2Int(valX,valY);
     }
     // Update is called once per frame
     

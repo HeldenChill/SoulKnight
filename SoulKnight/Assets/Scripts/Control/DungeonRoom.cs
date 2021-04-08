@@ -25,6 +25,9 @@ public class DungeonRoom : MonoBehaviour
         -ShopInRoom
         -PortalInRoom
     */
+    private static int makeId = 0;
+    public int id;
+    public int numOfEnemy;
     public Vector2Int size;
     public Vector2Int position;
     public Vector2Int gridPosition;
@@ -49,10 +52,21 @@ public class DungeonRoom : MonoBehaviour
         -winFloor()
         -characterEnterNewArea()
     */
-    public void FixedUpdate(){
+    void Awake(){
+        id = makeId;
+        makeId += 1;
+        EventManager.current.onEnemyDie += enemyDie;
+    }
+    void OnDestroy(){
+        EventManager.current.onEnemyDie -= enemyDie;
+    }
+    void FixedUpdate(){
         if(area != null){
-            if(area.IsTouchingLayers(OrangePlayer.layer)){
+            if(area.IsTouchingLayers(OrangePlayer.layerMask)){
                 closeRoom();
+                triggerEnemy();
+                area.enabled = false;
+                area = null;
             }
         }
     }
@@ -117,9 +131,22 @@ public class DungeonRoom : MonoBehaviour
             door.SetActive(true);           
         }
     }
-
-    private void globalOffset(Vector2Int position){
-
+    private void winRoom(){
+        openRoom();
     }
+    private void triggerEnemy(){
+        EventManager.current.PlayerEnterMonsterRoom(id);
+    }
+
+    private void enemyDie(int id){
+        if(this.id == id){
+            numOfEnemy -= 1;
+            if(numOfEnemy <= 0){
+                winRoom();
+            }
+        }
+        
+    }
+    
 
 }
