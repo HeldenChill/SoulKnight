@@ -322,7 +322,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 5215706393467424048}
   - component: {fileID: 5215706393467424049}
   - component: {fileID: 5215706393467424050}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,6 +486,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map: {fileID: 0}
   numberOfRoom: 0
+  monster:
+  - {fileID: 5459922695670682050, guid: f6052f29ae5378f44b3a2b6b987633ae, type: 3}
+  - {fileID: 636130481981629410, guid: e2e2610c2d149354aba3297a103ef43f, type: 3}
   rooms: []
   decoration:
   - {fileID: 7285056487649518602, guid: 85ab8b39ebf276c42972e1ebfc1bca79, type: 3}

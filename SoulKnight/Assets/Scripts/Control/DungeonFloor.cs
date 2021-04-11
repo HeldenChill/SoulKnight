@@ -38,15 +38,17 @@ public class DungeonFloor : MonoBehaviour
         -chracterEnterNewArea()
     */
     
-    public void Start(){
-        rooms = new List<DungeonRoom>();
+    void Start(){
         map = gameObject.GetComponent<CreateMap>();
-        Init();
-        initFuncObj();
-        createSketchMap();
-        createDetailMap();
-        createEnemy();
+        EventManager.current.onEndArea += characterEnterNewArea;
+        createNewArea();
+        
     }
+    void OnDestroy(){
+        EventManager.current.onEndArea -= characterEnterNewArea;
+    }
+
+    
     public void Init(int level = 1){
         this.level = level;
         positionOfRoom = new int[level+6,level+6];
@@ -133,10 +135,11 @@ public class DungeonFloor : MonoBehaviour
         
     }
 
-    public void chracterEnterNewArea(){
-
+    public void characterEnterNewArea(){
+        numberOfArea -= 1;
+        createNewArea();
     }
-    public void chracterEnterNewFloor(){
+    public void characterEnterNewFloor(){
 
     }
 
@@ -147,12 +150,22 @@ public class DungeonFloor : MonoBehaviour
                 for(int i = 0; i < numOfMonster; i++){
                     Vector2Int pos = GameHelper.pickRandomPosition(room.gridPosition,room.size - new Vector2Int(1,1));
                     Vector2 globalPos = map.globalPosition(pos);
-                    GameObject enemy = Instantiate(monster[0],globalPos,Quaternion.identity);
+                    GameObject enemy = Instantiate(monster[0],globalPos,Quaternion.identity,EventManager.current.Environment.transform);
                     enemy.GetComponent<AIEnemyBrain>().roomInID = room.id;
                     room.numOfEnemy = numOfMonster;
                 }
             }
         }
+    }
+
+    private void createNewArea(){
+        map.clearMap();
+        rooms = new List<DungeonRoom>();
+        Init();
+        initFuncObj();
+        createSketchMap();
+        createDetailMap();
+        createEnemy();
     }
     private void initFuncObj(){
         funcObj = new List<List<GameObject>>();

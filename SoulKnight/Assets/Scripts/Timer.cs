@@ -42,11 +42,15 @@ public class Timer : MonoBehaviour
     public void timeStop(){
         timerIsStart = false;
         timeRemaining = 0;
-        StopCoroutine(lastRoutine);
+        if(lastRoutine != null)
+            StopCoroutine(lastRoutine);
     }
     private void timeOut(){
         if(TimeOut != null){
             TimeOut();
         }
+    }
+    void OnDestroy(){
+        timeStop();
     }
 } 

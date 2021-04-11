@@ -128,7 +128,8 @@ public class DungeonRoom : MonoBehaviour
     public void closeRoom(){
         foreach (var door in functionalObj)
         {
-            door.SetActive(true);           
+            if(door != null)
+                door.SetActive(true);           
         }
     }
     private void winRoom(){

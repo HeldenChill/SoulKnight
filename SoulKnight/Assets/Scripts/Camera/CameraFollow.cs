@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     void FixedUpdate()
     {
-        cameraPos = new Vector3(followedObject.position.x,followedObject.position.y,-10f);
+        cameraPos = new Vector3(followedObject.position.x,followedObject.position.y,-20f);
         transform.position = Vector3.SmoothDamp(gameObject.transform.position,cameraPos,ref velocity,dampTime);
     }
 }

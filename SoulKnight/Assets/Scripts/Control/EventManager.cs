@@ -7,13 +7,20 @@ public class EventManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static EventManager current;
+    [SerializeField]private GameObject environmentPrefab;
     private void Awake(){
-        if(current == null)
+        if(current == null){
             current = this;
+            Environment = Instantiate(environmentPrefab,transform.position,Quaternion.identity);
+        }
+            
     }
-
+    
+    public GameObject Environment;
     public event Action<int> onPlayerEnterMonsterRoom;
     public event Action<int> onEnemyDie;
+
+    public event Action onEndArea;
     public void PlayerEnterMonsterRoom(int id){
         if(onPlayerEnterMonsterRoom != null){
             onPlayerEnterMonsterRoom(id);
@@ -25,4 +32,14 @@ public class EventManager : MonoBehaviour
             onEnemyDie(id);
         }
     }
+
+    public void EndArea(){
+        if(onEndArea != null){
+            Destroy(Environment);
+            Environment = Instantiate(environmentPrefab,transform.position,Quaternion.identity);
+            onEndArea();
+            PlayerBase.player.GetComponent<PlayerBase>().resetPosition();
+        }
+    }
+
 }

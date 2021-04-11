@@ -49,7 +49,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,9 +91,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1422348130756540938}
   - component: {fileID: 1422348130756540937}
-  m_Layer: 0
+  - component: {fileID: 7197387321717368622}
+  - component: {fileID: 6083495168644286836}
+  m_Layer: 13
   m_Name: Portal
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,3 +131,28 @@ CapsuleCollider2D:
   m_Offset: {x: -0.08194971, y: 0.12452698}
   m_Size: {x: 2.4446592, y: 3.7514486}
   m_Direction: 0
+--- !u!114 &7197387321717368622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422348130756540936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926625ad08c15e744a5d6e04b8c63170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6083495168644286836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422348130756540936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7308ee51206dc524e845a8cdad7b2015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeOfArea: {x: 2, y: 2}

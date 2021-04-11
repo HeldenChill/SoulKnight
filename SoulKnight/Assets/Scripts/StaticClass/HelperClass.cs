@@ -83,4 +83,11 @@ public static class HelperClass
         return angleToVector(angle);
     }
     
+    public static void initArrayWithValue(Collider2D[] array,Collider2D value){
+        for(int i = 0; i < array.Length; i++){
+            array[i] = value;
+        }
+    }
+
+    
 }

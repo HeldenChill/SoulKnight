@@ -2,28 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIEnemyBrain : MonoBehaviour,ICharacterBase
+public class AIEnemyBrain : EnemyBase,ICharacterBase
 {
     //atribute
-    public int roomInID = -1;
-    public float speed = 1;
-    public int hp = 20;
     private float timePatrol;
-    private Vector2 direction;
-    private Transform target;
     private bool isStopNextStep = true; //for patrol
     private Timer timer;
     private Timer timeAttack;
-    private GameObject weapon;
-    
-    //module
-    private MoveVelocityRBModule moveModule;
-    private SensorModule sensor;
-    private FilpForDirectionView filpModule;
-    
     //setup enemy
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         timer = gameObject.AddComponent<Timer>();
         EventManager.current.onPlayerEnterMonsterRoom += trigger;
         this.enabled = false;
@@ -33,26 +22,19 @@ public class AIEnemyBrain : MonoBehaviour,ICharacterBase
     }
     void Start(){
         weapon = GameHelper.findWeapon(this.gameObject);
-        filpModule = GetComponent<FilpForDirectionView>();
-        moveModule = GetComponent<MoveVelocityRBModule>();
-        sensor = GetComponent<SensorModule>();
     }
     //enemy active
     void FixedUpdate()
     {
-        target = OrangePlayer.player.transform;
-        filpModule.lookAt(target.position);
+        target = PlayerBase.player.transform;
+        lookAtModule.lookAt(target.position);
+        weapon.GetComponent<LongRangeWeapon>().aim(target.position);
         decide();
         moveModule.setVelocity(direction * speed);   
          
     }
     //trigger enemy
-    private void trigger(int id){
-        if(id == this.roomInID){
-            //this.isTrigger = true;
-            this.enabled = true;
-        }
-    }
+    
 
     //enemy hehaviour
         //decision
@@ -105,21 +87,14 @@ public class AIEnemyBrain : MonoBehaviour,ICharacterBase
         }
     }
         //get damage
-    public void getDamage(int damage){
-        hp -= damage;
-        if(hp < 0){
-            die();
-        }
-    }
-
-    public void getMana(int mana){
-
+    public override void getDamage(int damage){
+        Hp -= damage;
     }
     public void changeWeapon(GameObject weapon){
         
     }
         //die
-    private void die(){
+    protected override void die(){
         EventManager.current.EnemyDie(roomInID);
         Destroy(gameObject);
     }
@@ -138,9 +113,7 @@ public class AIEnemyBrain : MonoBehaviour,ICharacterBase
         return LayerMask.GetMask(LayerMask.LayerToName(getLayer()));
     }
     //helper function
-    private void setRandomDirectionMove(float minAngle,float maxAngle){
-        direction = HelperClass.getRandomDirection(minAngle,maxAngle);
-    }
+    
     private bool detecting(float range,LayerMask layer){
         sensor.setUpObservation(range,layer);
 

@@ -2,46 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrangePlayer : MonoBehaviour,ICharacterBase
+public class OrangePlayer : PlayerBase,ICharacterBase
 {
-    public static GameObject player;
-    public static int layerMask;
-    public int speed = 5;
-    public int hp = 5;
-    public int mana = 100;
-    [SerializeField]private int money = 50;
-    private FilpForDirectionView filpForDirection;
-    private KeyboardInput inputModule;
-    private MoveVelocityRBModule moveModule;
-    private ContactItemModule contactItemModule;
-    private GameObject weapon;
-
-    public int Money{
-        get{return money;}
-        set{
-            money = value;
-        }
+     
+    protected override void Awake(){
+        base.Awake();
+        PlayerBase.player = gameObject;
     }
-    public GameObject Weapon{
-        get{return weapon;}
-        set{
-            weapon = value;
-            if(filpForDirection != null)
-                filpForDirection.Weapon = weapon;
-        }
-    }
-    
     protected virtual void Start()
     {
-        player = gameObject;
-        inputModule = GetComponent<KeyboardInput>();
-        moveModule = GetComponent<MoveVelocityRBModule>();
-        filpForDirection = GetComponent<FilpForDirectionView>();
-        contactItemModule = GetComponent<ContactItemModule>();
-
+        //Debug.Log(PlayerBase.player.name);
         gameObject.layer = LayerMask.NameToLayer("Player");
         layerMask = LayerMask.GetMask("Player");
-
         weapon = GameHelper.findWeapon(this.gameObject);
     }
 
@@ -59,31 +31,19 @@ public class OrangePlayer : MonoBehaviour,ICharacterBase
             //Debug.Log(contactItemModule.ItemInRange[0].gameObject.name);
             contactItemModule.ItemInRange[0].gameObject.GetComponent<IItem>().getItem();
         }
-        filpForDirection.lookAt(HelperClass.getMouse2DPosition());
+        lookAtModule.lookAt(HelperClass.getMouse2DPosition());
+        weapon.GetComponent<Weapon>().aim(HelperClass.getMouse2DPosition());
     }
 
     public void changeWeapon(GameObject weapon){
         Weapon = weapon;
     }
-    public void getDamage(int damage){
-        hp -= damage;
-        if(hp <= 0){
-            die();
-        }
-    }
-
-    public void getMana(int mana){
-        this.mana += mana; 
-    }
+    
     public int getLayer(){
         return gameObject.layer;
     }
     public int getLayerMask(){
         return LayerMask.GetMask(LayerMask.LayerToName(getLayer()));
-    }
-
-    private void die(){
-
     }
 
 }

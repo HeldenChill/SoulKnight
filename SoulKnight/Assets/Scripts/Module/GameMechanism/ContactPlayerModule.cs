@@ -8,7 +8,7 @@ public class ContactPlayerModule : MonoBehaviour
     [SerializeField]private Vector2 sizeOfArea = new Vector2(2f,2f);
     private bool active = true;
     private BoxCollider2D area;
-    private Collider2D[] playerInRange = new Collider2D[10];
+    private Collider2D[] playerInRange = new Collider2D[5];
     private ContactFilter2D filter2D = new ContactFilter2D();
 
     public bool Active{
@@ -31,14 +31,15 @@ public class ContactPlayerModule : MonoBehaviour
         filter2D.SetLayerMask(LayerMask.GetMask("Player"));
         area.size = sizeOfArea;
     }
-    void findPlayer(){
+    void contactPlayer(){
+        HelperClass.initArrayWithValue(playerInRange,null);
         area.OverlapCollider(filter2D,playerInRange);
     }
 
 
     public Collider2D[] PlayerInRange{
         get{
-            findPlayer();
+            contactPlayer();
             return playerInRange;
         }
     }
