@@ -11,7 +11,7 @@ public class HpPotion : MonoBehaviour,IItem
     }
     public void getItem(){
         if(contactPlayer.PlayerInRange[0] != null){
-            contactPlayer.PlayerInRange[0].gameObject.GetComponent<PlayerBase>().getDamage(-value/5);
+            contactPlayer.PlayerInRange[0].gameObject.GetComponent<PlayerBase>().Hp += value/5;
             Destroy(gameObject);
         }
         

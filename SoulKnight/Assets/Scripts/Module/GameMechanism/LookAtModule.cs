@@ -22,7 +22,7 @@ public class LookAtModule : MonoBehaviour
         if(gameObject != null){
             if(point.x < thisPosition.x){
                 if(isWeapon){
-                    gameObject.transform.localScale = new Vector3(initScale.x * -1,initScale.y * -1,initScale.z);
+                    gameObject.transform.localScale = new Vector3(-initScale.x,-initScale.y,initScale.z);
                 }
                 else{
                     gameObject.transform.localScale = new Vector3(initScale.x * -1,initScale.y,initScale.z);

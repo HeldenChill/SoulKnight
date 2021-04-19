@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -93,17 +93,19 @@ public class AIEnemyBrain : EnemyBase,ICharacterBase
     public void changeWeapon(GameObject weapon){
         
     }
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.layer == LayerMask.NameToLayer("Bullet")){
+            getDamage(other.GetComponent<Bullet>().Damage);
+        }    
+    }
         //die
     protected override void die(){
+        EventManager.current.createNormalReward(transform.position,1);
         EventManager.current.EnemyDie(roomInID);
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.layer == LayerMask.NameToLayer("Bullet")){
-            getDamage(5);
-        }    
-    }
+    
     //get layer and mask
     public int getLayer(){
         return gameObject.layer;

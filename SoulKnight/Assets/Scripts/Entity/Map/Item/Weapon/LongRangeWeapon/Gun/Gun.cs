@@ -10,9 +10,9 @@ public class Gun : LongRangeWeapon
     private Timer timer;
     private Transform firePoint;
     
-    
     protected override void Awake(){ 
         firePoint = transform.GetChild(0).GetChild(0).transform;
+        manaToUse = 2;
         base.Awake();
     }
 
@@ -21,11 +21,13 @@ public class Gun : LongRangeWeapon
         setLayer();
         timer = gameObject.AddComponent<Timer>();
     }
-    public override void attack(Vector2 target){
+    public override int attack(Vector2 target){
         if(!timer.TimerIsStart){
             mechanism(target);
             timer.timeStart(reloadTime);
+            return manaToUse;
         }   
+        return 0;
     }
 
     protected override void recoil()

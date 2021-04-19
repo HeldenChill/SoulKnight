@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBase : MonoBehaviour
+public abstract class PlayerBase : MonoBehaviour
 {
     public static GameObject player;
     public static int layerMask;
-    public int speed = 5;
-    public int hp = 5;
-    public int mana = 100;
-    [SerializeField]private int money = 50;
+    
+    [SerializeField]protected int speed = 5;
+    protected int hp = 5;
+    protected int shield = 5;
+    protected int mana = 100;
+    [SerializeField]protected int maxHp;
+    [SerializeField]protected int maxShield;
+    [SerializeField]protected int maxMana;
+    [SerializeField]protected int money = 50;
+    [SerializeField]protected PlayerGUIControl playerGUI;
     protected LookAtModule lookAtModule;
     protected KeyboardInput inputModule;
-    protected MoveVelocityRBModule moveModule;
+    protected IMoveBase moveModule;
     protected ContactItemModule contactItemModule;
     protected GameObject weapon;
 
@@ -21,17 +27,57 @@ public class PlayerBase : MonoBehaviour
         set{
             if(value <= 0){
                 hp = 0;
+                playerGUI.HpBar.setValue(0);
                 die();
             }
-            else{
+            else if(value <= maxHp){
                 hp = value;
             }
+            else{
+                hp = maxHp;
+            }
+        }
+    }
+
+    public int Shield{
+        get{return shield;}
+        set{
+            if(value < 0){
+                Hp += value;
+                shield = 0;
+                playerGUI.HpBar.setValue(Hp);
+            }
+            else if(value <= maxShield){
+                shield = value;
+            }
+            else{
+                shield = maxShield;
+            }
+            playerGUI.ShieldBar.setValue(shield);
+        }
+    }
+
+    public int Mana{
+        get{return mana;}
+        set{
+            if(value < 0){
+                mana = 0;
+            }
+            else if(value <= maxMana){
+                mana = value;
+            }
+            else{
+                mana = maxMana;
+            }
+            
+            playerGUI.ManaBar.setValue(mana);
         }
     }
     public int Money{
         get{return money;}
         set{
             money = value;
+            playerGUI.moneyText.text = money.ToString(); 
         }
     }
     public GameObject Weapon{
@@ -41,12 +87,6 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
-    public int Mana{
-        get{return mana;}
-        set{
-            mana = value;
-        }
-    }
 
     public int Speed{
         get{return speed;}
@@ -70,11 +110,11 @@ public class PlayerBase : MonoBehaviour
             Debug.LogError(player.name + " dont have " + typeof(LookAtModule).Name);
         }
 
-        if(TryGetComponent<MoveVelocityRBModule>(out MoveVelocityRBModule _moveModule)){
+        if(TryGetComponent<IMoveBase>(out IMoveBase _moveModule)){
             moveModule = _moveModule;
         }
         else{
-            Debug.LogError(player.name + " dont have " + typeof(MoveVelocityRBModule).Name);
+            Debug.LogError(player.name + " dont have " + typeof(IMoveBase).Name);
         }
 
         if(TryGetComponent<ContactItemModule>(out ContactItemModule _contactItemModule)){
@@ -83,6 +123,10 @@ public class PlayerBase : MonoBehaviour
         else{
             Debug.LogError(player.name + " dont have " + typeof(ContactItemModule).Name);
         }
+        hp = maxHp;
+        shield = maxShield;
+        mana = maxMana;
+        setupGUI();
     }
 
     // Update is called once per frame
@@ -95,14 +139,20 @@ public class PlayerBase : MonoBehaviour
     }
 
     public void getDamage(int damage){
-        Hp -= damage;
+        Shield -= damage;
     }
 
     public void getMana(int mana){
         Mana += mana; 
     }
+    protected abstract void skill();
+    protected abstract void endSkill();
 
-    protected void die(){
-
+    protected abstract void die();
+    private void setupGUI(){
+        playerGUI.HpBar.setMaxValue(Hp);
+        playerGUI.ShieldBar.setMaxValue(Shield);
+        playerGUI.ManaBar.setMaxValue(Mana);
+        playerGUI.moneyText.text = money.ToString();
     }
 }

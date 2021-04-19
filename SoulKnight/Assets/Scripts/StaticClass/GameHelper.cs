@@ -24,6 +24,5 @@ public static class GameHelper
         int valY = Random.Range(center.y - size.y,center.y + size.y + 1);
         return new Vector2Int(valX,valY);
     }
-    // Update is called once per frame
     
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class NormalBullet : Bullet
 {
     void Awake(){ // Awake is suitable for setting initial values ​​for variables
-        speed = 15f;
-        hp  = 5f;
+        speed = 15;
+        hp  = 5;
         rb = gameObject.GetComponent<Rigidbody2D>();
         Debug.Log("Awake");
     }
@@ -37,18 +37,4 @@ public class NormalBullet : Bullet
         return velocity;
     }
     
-
-    protected override void getDamage(int damage)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void playAnimation()
-    {
-        throw new System.NotImplementedException();
-    }
-    protected override void attack()
-    {
-        throw new System.NotImplementedException();
-    }
 }

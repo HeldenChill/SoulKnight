@@ -8,6 +8,8 @@ public class EventManager : MonoBehaviour
     // Start is called before the first frame update
     public static EventManager current;
     [SerializeField]private GameObject environmentPrefab;
+    [SerializeField]private GameObject mana;
+    [SerializeField]private GameObject coin;
     private void Awake(){
         if(current == null){
             current = this;
@@ -39,6 +41,14 @@ public class EventManager : MonoBehaviour
             Environment = Instantiate(environmentPrefab,transform.position,Quaternion.identity);
             onEndArea();
             PlayerBase.player.GetComponent<PlayerBase>().resetPosition();
+        }
+    }
+
+    public void createNormalReward(Vector3 position,int level){
+        int numOfObject = UnityEngine.Random.Range(0,level + 3);
+        for(int i = 0; i < numOfObject; i++){
+            Instantiate(mana,position,Quaternion.identity,Environment.transform);
+            Instantiate(coin,position,Quaternion.identity,Environment.transform);
         }
     }
 

@@ -6,7 +6,8 @@ public class Type1Bullet : Bullet
 {
 
     public GameObject impactEffect;
-    
+    void Awake(){
+    }
     public override void Start()
     {
         base.Start();
@@ -47,18 +48,5 @@ public class Type1Bullet : Bullet
         destroy();
     }
 
-    protected override void getDamage(int damage)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    protected override void playAnimation()
-    {
-        throw new System.NotImplementedException();
-    }
-    protected override void attack()
-    {
-        throw new System.NotImplementedException();
-    }
 
 }

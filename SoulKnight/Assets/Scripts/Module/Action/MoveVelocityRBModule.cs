@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveVelocityRBModule : MonoBehaviour
+public class MoveVelocityRBModule : MonoBehaviour,IMoveBase
 {
     // Start is called before the first frame update
     private Vector2 velocity = Vector2.zero;
@@ -18,12 +18,9 @@ public class MoveVelocityRBModule : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        rb.velocity = velocity;
-    }
 
     public void setVelocity(Vector2 vel){
         velocity = vel;
+        rb.velocity = velocity;
     }
 }

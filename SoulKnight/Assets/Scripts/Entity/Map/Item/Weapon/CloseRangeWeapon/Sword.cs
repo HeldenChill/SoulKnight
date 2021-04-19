@@ -11,10 +11,13 @@ public class Sword : CloseRangeWeapon
         base.Awake();
         reloadTime = 0.5f;
         damageWeapon = 2;
+        manaToUse = 1;
     }
-    public override void attack(Vector2 target)
+    public override int attack(Vector2 target)
     {
         mechanism(target);
+        return 0;
+
     }
 
     protected override void mechanism(Vector2 target)

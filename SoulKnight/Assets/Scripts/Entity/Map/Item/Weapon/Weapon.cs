@@ -12,7 +12,7 @@ public abstract class Weapon : MonoBehaviour,IItem
     public AnimatorModule animatorModule;
     public ContactPlayerModule contactPlayer;
     public ChangeWeaponModule changeWeapon;
-
+    protected int manaToUse;
     protected virtual void Awake(){
         if(TryGetComponent<LookAtModule>(out LookAtModule _lookAtModule)){
             lookAtModule = _lookAtModule;
@@ -73,7 +73,7 @@ public abstract class Weapon : MonoBehaviour,IItem
         isLookAt = true;
     }
 
-    public abstract void attack(Vector2 target);
+    public abstract int attack(Vector2 target);
     protected abstract void mechanism(Vector2 target);
     public abstract void setLayer();
 
