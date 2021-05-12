@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class LookAtModule : MonoBehaviour
 {   
-    Vector3 initScale;
+    public Vector3 initScale;
     bool isWeapon = false;
     public void Start(){
         Vector3 scale = transform.localScale;
-        initScale = new Vector3(Mathf.Abs(scale.x),Mathf.Abs(scale.y),scale.z);
+        if(transform.localScale.x != 0)
+            initScale = new Vector3(Mathf.Abs(scale.x),Mathf.Abs(scale.y),scale.z);
     }
     public bool IsWeapon{
         get{return isWeapon;}
@@ -27,7 +28,7 @@ public class LookAtModule : MonoBehaviour
                 else{
                     gameObject.transform.localScale = new Vector3(initScale.x * -1,initScale.y,initScale.z);
                 }
-                    
+                
             }
             else{
                 gameObject.transform.localScale = initScale;

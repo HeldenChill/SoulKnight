@@ -7,17 +7,23 @@ public class BarControl : MonoBehaviour
 {
     [SerializeField]private Slider slider;
     [SerializeField]private Text text;
-    int maxValue;
+    float maxValue;
 
-    public void setMaxValue(int maxValue){
+    public void setMaxValue(float maxValue){
         this.maxValue = maxValue;
         slider.maxValue = maxValue;
         slider.value = maxValue;
-        text.text = maxValue.ToString()+ "/" + maxValue.ToString();
+        if(text != null)
+            text.text = maxValue.ToString()+ "/" + maxValue.ToString();
     }
 
-    public void setValue(int value){
+    public void setValue(float value){
         slider.value = value;
-        text.text = value.ToString()+ "/" + maxValue.ToString();
+        if(text != null)
+            text.text = value.ToString()+ "/" + maxValue.ToString();
+    }
+
+    public float getValue(){
+        return slider.value;
     }
 }

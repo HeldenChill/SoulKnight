@@ -7,9 +7,10 @@ public class EventManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static EventManager current;
+
     [SerializeField]private GameObject environmentPrefab;
-    [SerializeField]private GameObject mana;
-    [SerializeField]private GameObject coin;
+    [SerializeField]private RewardManager rewardManager;
+    [SerializeField]private ButtonManager buttonManager;
     private void Awake(){
         if(current == null){
             current = this;
@@ -18,6 +19,7 @@ public class EventManager : MonoBehaviour
             
     }
     
+    [HideInInspector]
     public GameObject Environment;
     public event Action<int> onPlayerEnterMonsterRoom;
     public event Action<int> onEnemyDie;
@@ -45,11 +47,10 @@ public class EventManager : MonoBehaviour
     }
 
     public void createNormalReward(Vector3 position,int level){
-        int numOfObject = UnityEngine.Random.Range(0,level + 3);
-        for(int i = 0; i < numOfObject; i++){
-            Instantiate(mana,position,Quaternion.identity,Environment.transform);
-            Instantiate(coin,position,Quaternion.identity,Environment.transform);
-        }
+        rewardManager.createNormalReward(position,level);
     }
 
+    public void activePauseMenu(){
+        buttonManager.setActivePauseGUI(true);
+    }
 }

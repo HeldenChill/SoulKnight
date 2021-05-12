@@ -27,9 +27,10 @@ public class OrangePlayer : PlayerBase,ICharacterBase
         } 
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
-
+        if(Time.timeScale == 0) return; //Every line of code below this line will not call when timeScale equals 0
+        base.Update();
         if(Input.GetMouseButton(0)){
             int value = weapon.GetComponent<Weapon>().attack(HelperClass.getMouse2DPosition());   
             if(value != 0){
@@ -48,7 +49,7 @@ public class OrangePlayer : PlayerBase,ICharacterBase
             }
         }
         lookAtModule.lookAt(HelperClass.getMouse2DPosition());
-        weapon.GetComponent<Weapon>().aim(HelperClass.getMouse2DPosition());
+        weapon.GetComponent<Weapon>().aim(HelperClass.getMouse2DPosition()); // Weapon will point to mouse position
     }
 
     public void changeWeapon(GameObject weapon){

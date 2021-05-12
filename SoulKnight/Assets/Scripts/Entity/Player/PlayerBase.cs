@@ -27,7 +27,8 @@ public abstract class PlayerBase : MonoBehaviour
         set{
             if(value <= 0){
                 hp = 0;
-                playerGUI.HpBar.setValue(0);
+                if(playerGUI != null)
+                    playerGUI.HpBar.setValue(0);
                 die();
             }
             else if(value <= maxHp){
@@ -45,7 +46,8 @@ public abstract class PlayerBase : MonoBehaviour
             if(value < 0){
                 Hp += value;
                 shield = 0;
-                playerGUI.HpBar.setValue(Hp);
+                if(playerGUI != null)
+                    playerGUI.HpBar.setValue(Hp);
             }
             else if(value <= maxShield){
                 shield = value;
@@ -53,7 +55,8 @@ public abstract class PlayerBase : MonoBehaviour
             else{
                 shield = maxShield;
             }
-            playerGUI.ShieldBar.setValue(shield);
+            if(playerGUI != null)
+                playerGUI.ShieldBar.setValue(shield);
         }
     }
 
@@ -69,15 +72,16 @@ public abstract class PlayerBase : MonoBehaviour
             else{
                 mana = maxMana;
             }
-            
-            playerGUI.ManaBar.setValue(mana);
+            if(playerGUI != null)
+                playerGUI.ManaBar.setValue(mana);
         }
     }
     public int Money{
         get{return money;}
         set{
             money = value;
-            playerGUI.moneyText.text = money.ToString(); 
+            if(playerGUI != null)
+                playerGUI.moneyText.text = money.ToString(); 
         }
     }
     public GameObject Weapon{
@@ -123,16 +127,17 @@ public abstract class PlayerBase : MonoBehaviour
         else{
             Debug.LogError(player.name + " dont have " + typeof(ContactItemModule).Name);
         }
-        hp = maxHp;
-        shield = maxShield;
-        mana = maxMana;
-        setupGUI();
+        
+        initAttribute();
+        initGUI();
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        if(inputModule.OptionMenu){
+            EventManager.current.activePauseMenu();
+        }
     }
     public void resetPosition(){
         transform.position = Vector3.zero;
@@ -145,14 +150,50 @@ public abstract class PlayerBase : MonoBehaviour
     public void getMana(int mana){
         Mana += mana; 
     }
+
+    public PlayerBaseProfile getProfile(){
+        PlayerBaseProfile profile = new PlayerBaseProfile();
+        profile.maxHp = maxHp;
+        profile.maxMana = maxMana;
+        profile.maxShield = maxShield;
+        profile.Hp = Hp;
+        profile.Mana = Mana;
+        profile.Shield = Shield;
+        profile.Speed = Speed;
+        return profile;
+    }
+
+    public void setPlayerBaseProfile(PlayerBaseProfile profile){
+        maxHp = profile.maxHp;
+        maxMana = profile.maxMana;
+        maxShield = profile.maxShield;
+        Hp = profile.Hp;
+        Mana = profile.Mana;
+        Shield = profile.Shield;
+        Speed = profile.Speed;
+        initGUI();
+    }
     protected abstract void skill();
     protected abstract void endSkill();
 
     protected abstract void die();
-    private void setupGUI(){
-        playerGUI.HpBar.setMaxValue(Hp);
-        playerGUI.ShieldBar.setMaxValue(Shield);
-        playerGUI.ManaBar.setMaxValue(Mana);
+    private void initAttribute(){
+        hp = maxHp;
+        shield = maxShield;
+        mana = maxMana;
+    }
+
+    private void initGUI(){
+        if(playerGUI == null) return;       //If player not in the dungeon(=> playerGUI = null)
+        playerGUI.HpBar.setMaxValue(maxHp);
+        playerGUI.ShieldBar.setMaxValue(maxShield);
+        playerGUI.ManaBar.setMaxValue(maxMana);
+
+        playerGUI.HpBar.setValue(Hp);
+        playerGUI.ShieldBar.setValue(Shield);
+        playerGUI.ManaBar.setValue(Mana);
         playerGUI.moneyText.text = money.ToString();
     }
+
+
 }
