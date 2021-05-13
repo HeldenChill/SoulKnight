@@ -33,9 +33,13 @@ public abstract class PlayerBase : MonoBehaviour
             }
             else if(value <= maxHp){
                 hp = value;
+                if(playerGUI != null)
+                    playerGUI.HpBar.setValue(hp);
             }
             else{
                 hp = maxHp;
+                if(playerGUI != null)
+                    playerGUI.HpBar.setValue(maxHp);
             }
         }
     }

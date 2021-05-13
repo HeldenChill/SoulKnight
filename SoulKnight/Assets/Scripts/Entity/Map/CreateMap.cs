@@ -91,7 +91,7 @@ public class CreateMap : MonoBehaviour
         }     
         // set manager area
         room.area.offset = new Vector2(0.08f,0.16f) + ((Vector2)room.gridPosition) *0.16f;
-        room.area.size = (Vector2)room.size * 0.16f * 2 - new Vector2(0.16f,0.32f)*1;
+        room.area.size = (Vector2)room.size * 0.16f * 2 - new Vector2(0.16f,0.32f)*1.5f;
         return doors;
     }
 
