@@ -19,8 +19,8 @@ public class AbsGameObject : MonoBehaviour
     }
     protected virtual void Update()
     {
-        move();
-        jump();
+        Move();
+        Jump();
     }
     protected virtual void FixedUpdate(){
         rb.velocity = velocity;
@@ -71,10 +71,10 @@ public class AbsGameObject : MonoBehaviour
         transform.rotation = currentDirection;
     }
 
-    protected virtual void jump(){  
+    protected virtual void Jump(){  
         rb.AddForce(new Vector2(0,jumpForce));
     }    
-    protected virtual void move(){
+    protected virtual void Move(){
 
     }
     protected virtual void getDamage(int damage){

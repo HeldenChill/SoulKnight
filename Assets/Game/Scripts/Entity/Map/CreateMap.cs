@@ -49,7 +49,7 @@ public class CreateMap : MonoBehaviour
     }
 
 
-    public Vector2Int drawRoom(Vector2Int position,Vector2Int size,List<GameObject> decoration){
+    public Vector2Int DrawRoom(Vector2Int position,Vector2Int size,List<GameObject> decoration){
         Vector2Int gridPosition = position*lengthOfLobby*2;
         DrawRectangleTile((Vector3Int)gridPosition,size.x,size.y);
         Instantiate(decoration[1],(Vector3)GlobalPosition(gridPosition + new Vector2Int(7,7)),Quaternion.identity,EventManager.Inst.Environment.transform);

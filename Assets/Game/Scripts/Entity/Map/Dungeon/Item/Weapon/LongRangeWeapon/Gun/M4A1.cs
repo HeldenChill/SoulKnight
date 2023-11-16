@@ -9,8 +9,6 @@ public class M4A1 : Gun
     private int numberOfBullet = 3;
     protected override void Awake(){
         base.Awake();
-        reloadTime = 0.6f;
-        accurancy = 60;
     }
     protected override void Mechanism(Vector2 target)
     {

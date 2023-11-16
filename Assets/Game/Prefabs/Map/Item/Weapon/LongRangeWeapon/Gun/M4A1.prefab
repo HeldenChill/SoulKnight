@@ -83,6 +83,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -130,13 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1dbad1a43a4cfc4abf3d9e6f6d5f230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 0.1
+  reloadTime: 0.6
   value: 18
   lookAtModule: {fileID: 0}
   animatorModule: {fileID: 0}
   contactPlayer: {fileID: 0}
   changeWeapon: {fileID: 0}
-  accurancy: 7
+  accurancy: 15
   bullet: {fileID: 1403011178226502074, guid: a9dae6d1c7d41b74a8d28c32f35cccfe, type: 3}
 --- !u!114 &745076817844336203
 MonoBehaviour:
@@ -150,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ed0304c3aed2f41b67f72e03b5609a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initScale: {x: 0, y: 0, z: 0}
 --- !u!114 &7188651368608015467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!95 &1902356051887647239
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -202,10 +204,11 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &2067686367783157193
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +256,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

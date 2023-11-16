@@ -26,13 +26,13 @@ public class EventManager : MonoBehaviour
     public event Action onEndArea;
     public void PlayerEnterMonsterRoom(int id){
         if(onPlayerEnterMonsterRoom != null){
-            onPlayerEnterMonsterRoom(id);
+            onPlayerEnterMonsterRoom?.Invoke(id);
         }
     }
 
     public void EnemyDie(int id){
         if(onEnemyDie != null){
-            onEnemyDie(id);
+            onEnemyDie?.Invoke(id);
         }
     }
 

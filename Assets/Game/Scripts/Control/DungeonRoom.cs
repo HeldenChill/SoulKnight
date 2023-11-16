@@ -102,7 +102,7 @@ public class DungeonRoom : MonoBehaviour
 
 
     public void CreateDetailRoom(CreateMap map,List<GameObject> decoration){
-        gridPosition = map.drawRoom(position,size,decoration);
+        gridPosition = map.DrawRoom(position,size,decoration);
         if(type == TypeOfRoom.Monster || type == TypeOfRoom.Boss){
             functionalObj = map.CreateMosterRoom(this);
             OpenRoom();

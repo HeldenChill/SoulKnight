@@ -43,4 +43,9 @@ public class CustomEditorTool : EditorWindow
     {
         OpenScene("GameScene");
     }
+    [MenuItem("Open Scene/Pathfinding")]
+    public static void Pathfinding()
+    {
+        OpenScene("Pathfinding");
+    }
 }

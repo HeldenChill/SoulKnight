@@ -12,8 +12,6 @@ public class AK47 : Gun
     protected override void Awake(){
         base.Awake();
         puzzleFlare = transform.GetChild(1).GetComponent<PuzzleFlare>();
-        reloadTime = 0.3f;
-        accurancy = 40;
     }
     protected override void Mechanism(Vector2 target)
     {

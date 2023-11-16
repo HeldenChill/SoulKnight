@@ -15,7 +15,16 @@ public class EnemyBase : MonoBehaviour
     protected SensorModule sensor;
     protected LookAtModule lookAtModule;
     protected GameObject weapon;
-
+    protected Weapon weaponScripts;
+    public GameObject Weapon
+    {
+        get => weapon;
+        set
+        {
+            weapon = value;
+            weaponScripts = weapon.GetComponent<Weapon>();
+        }
+    }
     public int Hp{
         get{return hp;}
         set{

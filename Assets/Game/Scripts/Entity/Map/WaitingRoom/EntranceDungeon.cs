@@ -17,7 +17,7 @@ public class EntranceDungeon : MonoBehaviour,IItem
     public void GetItem(){
         if(contactPlayer.PlayerInRange[0] != null){
             SetActiveContact(false);
-            Scenes.current.Load("GameScene",WatingRoomManager.current.player);
+            Scenes.current.Load("Pathfinding",WatingRoomManager.current.player);
             Scenes.current.playerProfile.setMaxAll();
             Debug.Log(Scenes.current.playerProfile.getInfo());
         }

@@ -23,14 +23,14 @@ public class AIEnemyBrain : EnemyBase,ICharacterBase
         EventManager.Inst.onPlayerEnterMonsterRoom -= trigger;
     }
     void Start(){
-        weapon = GameHelper.FindWeapon(this.gameObject);
+        Weapon = GameHelper.FindWeapon(this.gameObject);
     }
     //enemy active
     void FixedUpdate()
     {
         target = PlayerBase.player.transform;
         lookAtModule.LookAt(target.position);
-        weapon.GetComponent<LongRangeWeapon>().Aim(target.position);
+        weaponScripts.Aim(target.position);
         Decide();
         moveModule.SetVelocity(direction * speed);   
          
@@ -43,7 +43,7 @@ public class AIEnemyBrain : EnemyBase,ICharacterBase
     public void Decide(){
         timePatrol = Random.Range(1f,2f);
         Patrol(timePatrol);
-        weapon.GetComponent<Weapon>().Attack(target.position);  
+        weaponScripts.Attack(target.position);  
     }
         //patrol
     public void Patrol(float stepTime){

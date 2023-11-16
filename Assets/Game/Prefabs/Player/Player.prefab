@@ -341,18 +341,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3784495616436439108}
     m_Modifications:
-    - target: {fileID: 1060482177, guid: 47b7b5a3947b83d41a7e6faaa9d3c647, type: 3}
-      propertyPath: initScale.x
-      value: 2.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060482177, guid: 47b7b5a3947b83d41a7e6faaa9d3c647, type: 3}
-      propertyPath: initScale.y
-      value: 2.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1060482177, guid: 47b7b5a3947b83d41a7e6faaa9d3c647, type: 3}
-      propertyPath: initScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 863468963370658142, guid: 47b7b5a3947b83d41a7e6faaa9d3c647,
         type: 3}
       propertyPath: m_RootOrder
@@ -412,26 +400,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AK47
-      objectReference: {fileID: 0}
-    - target: {fileID: 3100478600723833277, guid: 47b7b5a3947b83d41a7e6faaa9d3c647,
-        type: 3}
-      propertyPath: accurancy
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3100478600723833277, guid: 47b7b5a3947b83d41a7e6faaa9d3c647,
-        type: 3}
-      propertyPath: reloadTime
-      value: 0.005
-      objectReference: {fileID: 0}
-    - target: {fileID: 3100478600723833277, guid: 47b7b5a3947b83d41a7e6faaa9d3c647,
-        type: 3}
-      propertyPath: numberOfBullet
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3100478600723833277, guid: 47b7b5a3947b83d41a7e6faaa9d3c647,
-        type: 3}
-      propertyPath: timeBetweenBullet
-      value: 0.025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47b7b5a3947b83d41a7e6faaa9d3c647, type: 3}

@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7564fd836f6ea4c9c3e8e2c744ab62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomInID: -1
+  RoomInID: -1
   speed: 5
   hp: 20
 --- !u!114 &5459922695670682054

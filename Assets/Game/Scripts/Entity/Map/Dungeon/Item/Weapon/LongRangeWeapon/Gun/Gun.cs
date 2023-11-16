@@ -5,8 +5,6 @@ using Utilitys.Timer;
 
 public class Gun : LongRangeWeapon
 {
-    
-    
     public GameObject bullet;
     private STimer timer;
     private Transform firePoint;
