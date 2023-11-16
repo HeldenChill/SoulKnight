@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartScene.unity
+    path: Assets/Game/Scenes/StartScene.unity
     guid: 004618bebf31809468f5e272c80cb1ce
   - enabled: 1
-    path: Assets/Scenes/WaitingRoom.unity
+    path: Assets/Game/Scenes/WaitingRoom.unity
     guid: be6dc45060cb954459eb77a823336cf8
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
+    path: Assets/Game/Scenes/GameScene.unity
     guid: d01720564ef4f3345a802bc17c1e79d8
   m_configObjects: {}

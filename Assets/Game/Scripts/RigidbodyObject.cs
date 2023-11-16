@@ -1,0 +1,22 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class RigidbodyObject : MoveObject
+{
+    protected Rigidbody2D rb;
+
+    public override void Init(float hp,float speed){ //Function we use to initialize the variable of Object(to reduce the use of Constructor)
+        this.hp = hp;
+        this.speed = speed;
+        this.currentRotation = transform.rotation;
+        
+    }
+
+    protected abstract void GetDamage(int damage);
+
+    protected abstract void PlayAnimation();
+    protected abstract void Attack();
+
+    
+}
