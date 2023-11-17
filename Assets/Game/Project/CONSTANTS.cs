@@ -58,8 +58,9 @@ namespace Game
         public CELL_STATE state = CELL_STATE.NONE;
     }
 
-    public interface IInit
+    public interface IPoolUnit
     {
         public void OnInit();
+        public void OnDespawn();
     }
 }

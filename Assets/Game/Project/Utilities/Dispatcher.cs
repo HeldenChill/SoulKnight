@@ -9,6 +9,7 @@ namespace Utilities
     {
         private readonly Dictionary<EVENT_ID, Action> _listenerEventDictionary = new Dictionary<EVENT_ID, Action>();
         private readonly Dictionary<EVENT_ID, Action<object>> _listenerParamEventDictionary = new Dictionary<EVENT_ID, Action<object>>();
+        private readonly Dictionary<EVENT_ID, object> _lastParam = new Dictionary<EVENT_ID, object>();
         public void RegisterListenerEvent(EVENT_ID eventID, Action callback)
         {
             if (_listenerEventDictionary.ContainsKey(eventID))
@@ -29,6 +30,7 @@ namespace Utilities
             else
             {
                 _listenerParamEventDictionary.Add(eventID, callback);
+                _lastParam.Add(eventID, null);
             }
         }
 
@@ -66,11 +68,24 @@ namespace Utilities
             }
         }
 
+        public object GetLastParamEvent(EVENT_ID eventID)
+        {
+            if (_lastParam.TryGetValue(eventID, out object value))
+            {
+                return value;
+            }
+            else
+            {
+                Debug.LogWarning("EventID " + eventID + " not found");
+            }
+            return null;
+        }
         public void PostEvent(EVENT_ID eventID, object data)
         {
             if (_listenerParamEventDictionary.TryGetValue(eventID, out Action<object> value))
             {
                 value?.Invoke(data);
+                _lastParam[eventID] = data;
             }
             else
             {
@@ -87,7 +102,7 @@ namespace Utilities
     public enum EVENT_ID
     {
         MAP_UPDATE = 0,
-        PLAYER_GRID_POS_UPDATE = 1,
+        PLAYER_GRID_POS_UPDATE = 1,       
     }
 
 }

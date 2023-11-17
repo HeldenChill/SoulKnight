@@ -21,7 +21,7 @@ namespace Project
             grid = new Grid<NodeCell, int>(56, 44, 2, new Vector2(-56, -45), () => new NodeCell());
             debug = new Grid<NodeCell, int>.DebugGrid();
             obstances = FindObjectsOfType<Obstance>();
-            //UpdateObstance();
+            UpdateObstance();
 
             mesh = new Mesh();
             GetComponent<MeshFilter>().mesh = mesh;

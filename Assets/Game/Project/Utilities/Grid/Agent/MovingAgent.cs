@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace Project
 {
     using Utilities.AI;
@@ -14,17 +15,27 @@ namespace Project
         public float Speed;
 
         Map map;
+        Map Map
+        {
+            get 
+            { 
+                if(map == null)
+                {
+                    map = LevelManager.Inst.Map;                  
+                }
+                return map;
+            }
+            set => map = value;
+        }
         Grid<NodeCell, int>.PathfindingAlgorithm algorithm;
         Queue<Vector2> steps = new Queue<Vector2>();
         Vector2 destination;
         Vector2 direction = new Vector2();
         bool isMoving = false;
-        private void Start()
+        private void Awake()
         {
-            map = LevelManager.Inst.Map;
             UpdateAlgorithm();
         }
-
         public void UpdateAlgorithm()
         {
             switch (typeAlgorithm)
@@ -52,20 +63,20 @@ namespace Project
         public void SetDestination(Vector2Int des)
         {
             if (mTransform.Equals(null)) return;
-            (int startX, int startY) = map.MapGrid.GetGridPosition(mTransform.position);
+            (int startX, int startY) = Map.MapGrid.GetGridPosition(mTransform.position);
             FindPath(startX, startY, des.x, des.y);
         }
         public void SetDestination(Vector3 position)
         {
             if (mTransform.Equals(null)) return;
-            (int desX, int desY) = map.MapGrid.GetGridPosition(position);
-            (int startX, int startY) = map.MapGrid.GetGridPosition(mTransform.position);
+            (int desX, int desY) = Map.MapGrid.GetGridPosition(position);
+            (int startX, int startY) = Map.MapGrid.GetGridPosition(mTransform.position);
             FindPath(startX, startY, desX, desY);
         }
 
         private void FindPath(int startX, int startY, int desX, int desY)
         {
-            List<NodeCell> path = algorithm.FindPath(startX, startY, desX, desY, map.MapGrid);
+            List<NodeCell> path = algorithm.FindPath(startX, startY, desX, desY, Map.MapGrid);
             //map.ShowFCost();
             if (path == null) return;
             steps.Clear();
@@ -75,7 +86,7 @@ namespace Project
             }
 
             if (steps.Count == 0) return;
-            map.DrawPath(path);
+            Map.DrawPath(path);
             MoveTo(steps.Dequeue());
         }
 

@@ -26,7 +26,7 @@ namespace Utilities.AI
             closeList.Clear();
             NodeCell startNode = grid.GetGridCell(startX, startY);
             NodeCell endNode = grid.GetGridCell(endX, endY);
-            if (!endNode.IsWalkable) return null;
+            if (!endNode.IsWalkable || !startNode.IsWalkable) return null;
             openList.Add(startNode);
 
             for (int x = 0; x < grid.Width; x++)

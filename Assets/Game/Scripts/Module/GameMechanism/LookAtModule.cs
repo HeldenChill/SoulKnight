@@ -6,7 +6,7 @@ public class LookAtModule : MonoBehaviour
 {   
     public Vector3 initScale;
     bool isWeapon = false;
-    public void Start(){
+    public void Awake(){
         Vector3 scale = transform.localScale;
         if(transform.localScale.x != 0)
             initScale = new Vector3(Mathf.Abs(scale.x),Mathf.Abs(scale.y),scale.z);

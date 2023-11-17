@@ -15,7 +15,7 @@ namespace Utilities.AI
             this.grid = grid;
             NodeCell startNode = grid.GetGridCell(startX, startY);
             NodeCell endNode = grid.GetGridCell(endX, endY);
-            if (!endNode.IsWalkable) return null;
+            if (!endNode.IsWalkable || !startNode.IsWalkable) return null;
             if (endNode != null)
                 DestinationCell = endNode;
             if (IsGridUpdate)
