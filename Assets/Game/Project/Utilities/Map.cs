@@ -9,7 +9,7 @@ namespace Project
     using Utilities.AI;
     public class Map : MonoBehaviour
     {
-        
+
         Grid<NodeCell, int> grid;
         Grid<NodeCell, int>.DebugGrid debug;
 
@@ -18,10 +18,10 @@ namespace Project
         public Grid<NodeCell, int> MapGrid => grid;
         void Awake()
         {
-            grid = new Grid<NodeCell, int>(56, 44, 2, new Vector2(-56, -45) ,() => new NodeCell());
+            grid = new Grid<NodeCell, int>(56, 44, 2, new Vector2(-56, -45), () => new NodeCell());
             debug = new Grid<NodeCell, int>.DebugGrid();
             obstances = FindObjectsOfType<Obstance>();
-            UpdateObstance();
+            //UpdateObstance();
 
             mesh = new Mesh();
             GetComponent<MeshFilter>().mesh = mesh;
@@ -40,7 +40,7 @@ namespace Project
                 cell.IsWalkable = !cell.IsWalkable;
                 debug.UpdateVisualMap(grid, mesh);
                 Dispatcher.Inst.PostEvent(EVENT_ID.MAP_UPDATE);
-            }          
+            }
         }
 
         public void DrawPath(List<NodeCell> path)
@@ -53,11 +53,16 @@ namespace Project
         }
         private void UpdateObstance()
         {
-            foreach(Obstance obstance in obstances)
+            foreach (Obstance obstance in obstances)
             {
-                foreach(Vector2 point in obstance.PointExists)
+                NodeCell node1 = grid.GetGridCell(obstance.PointExists[3]);
+                NodeCell node2 = grid.GetGridCell(obstance.PointExists[0]);
+                for(int x = node1.X; x <= node2.X; x++)
                 {
-                    grid.GetGridCell(point).IsWalkable = false;
+                    for(int y = node1.Y; y <= node2.Y; y++) 
+                    { 
+                        grid.GetGridCell(x, y).IsWalkable = false;
+                    }
                 }
             }
         }

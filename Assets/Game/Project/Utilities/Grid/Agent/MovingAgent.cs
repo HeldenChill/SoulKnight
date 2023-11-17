@@ -10,8 +10,8 @@ namespace Project
         CONSTANTS.PATH_FINDING typeAlgorithm;
         [SerializeField]
         Transform mTransform;
-        [SerializeField]
-        float speed;
+        [HideInInspector]
+        public float Speed;
 
         Map map;
         Grid<NodeCell, int>.PathfindingAlgorithm algorithm;
@@ -49,15 +49,27 @@ namespace Project
                     break;
             }
         }
-
+        public void SetDestination(Vector2Int des)
+        {
+            if (mTransform.Equals(null)) return;
+            (int startX, int startY) = map.MapGrid.GetGridPosition(mTransform.position);
+            FindPath(startX, startY, des.x, des.y);
+        }
         public void SetDestination(Vector3 position)
         {
+            if (mTransform.Equals(null)) return;
             (int desX, int desY) = map.MapGrid.GetGridPosition(position);
             (int startX, int startY) = map.MapGrid.GetGridPosition(mTransform.position);
+            FindPath(startX, startY, desX, desY);
+        }
+
+        private void FindPath(int startX, int startY, int desX, int desY)
+        {
             List<NodeCell> path = algorithm.FindPath(startX, startY, desX, desY, map.MapGrid);
             //map.ShowFCost();
             if (path == null) return;
-            for (int i = 0; i < path.Count; i++)
+            steps.Clear();
+            for (int i = 1; i < path.Count; i++)
             {
                 steps.Enqueue(path[i].WorldPos);
             }
@@ -66,6 +78,7 @@ namespace Project
             map.DrawPath(path);
             MoveTo(steps.Dequeue());
         }
+
         private void MoveTo(Vector2 destination)
         {
             this.destination = destination;
@@ -89,7 +102,7 @@ namespace Project
                 }
 
                 direction.Normalize();
-                transform.position += (Vector3)direction * speed * Time.fixedDeltaTime;
+                transform.position += (Vector3)direction * Speed * Time.fixedDeltaTime;
             }
         }
 

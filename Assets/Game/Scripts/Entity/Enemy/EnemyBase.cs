@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, ICharacterBase
 {
     // Start is called before the first frame update
     [HideInInspector]
@@ -61,19 +61,11 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     protected void trigger(int id){
         if(id == this.RoomInID){
             //this.isTrigger = true;
             this.enabled = true;
         }
-    }
-    protected virtual void Die(){
-
     }
     protected void SetRandomDirectionMove(float minAngle,float maxAngle){
         direction = HelperClass.getRandomDirection(minAngle,maxAngle);
@@ -81,5 +73,33 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void GetDamage(int damage){
         Hp -= damage;
+    }
+    public void ChangeWeapon(GameObject weapon)
+    {
+
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+            GetDamage(other.GetComponent<Bullet>().Damage);
+        }
+    }
+    //die
+    protected virtual void Die()
+    {
+        EventManager.Inst.createNormalReward(transform.position, 1);
+        EventManager.Inst.EnemyDie(RoomInID);
+        Destroy(gameObject);
+    }
+
+    public int GetLayer()
+    {
+        return gameObject.layer;
+    }
+
+    public int GetLayerMask()
+    {
+        return LayerMask.GetMask(LayerMask.LayerToName(GetLayer()));
     }
 }

@@ -9,6 +9,7 @@ namespace Utilities.AI
     public class FlowfieldPathFinding : Grid<NodeCell, int>.PathfindingAlgorithm
     {      
         private NodeCell DestinationCell;
+        public bool IsAlgorithmUpdate = true;
         public override List<NodeCell> FindPath(int startX, int startY, int endX, int endY, Grid<NodeCell, int> grid)
         {
             this.grid = grid;
@@ -22,7 +23,11 @@ namespace Utilities.AI
                 GridUpdate(grid);
                 IsGridUpdate = false;
             }
-            AlgorithmUpdate(grid);
+            if (IsAlgorithmUpdate)
+            {
+                AlgorithmUpdate(grid);
+                IsAlgorithmUpdate = false;
+            }
             NodeCell currentNode = startNode;
             while (currentNode != endNode)
             {

@@ -18,11 +18,11 @@ namespace Utilities.AI
             get
             {
                 pointExist.Clear();
-                Vector2 addVector = Collider2D.size * mTransform.localScale / 2.1f;
+                Vector2 addVector = Collider2D.size * mTransform.localScale / 2f;
                 pointExist.Add((Vector2)mTransform.position + Collider2D.offset + addVector);
-                pointExist.Add((Vector2)mTransform.position + new Vector2(addVector.x, -addVector.y));
-                pointExist.Add((Vector2)mTransform.position + new Vector2(-addVector.x, addVector.y));
-                pointExist.Add((Vector2)mTransform.position + new Vector2(-addVector.x, -addVector.y));
+                pointExist.Add((Vector2)mTransform.position + Collider2D.offset + new Vector2(addVector.x, -addVector.y));
+                pointExist.Add((Vector2)mTransform.position + Collider2D.offset + new Vector2(-addVector.x, addVector.y));
+                pointExist.Add((Vector2)mTransform.position + Collider2D.offset + new Vector2(-addVector.x, -addVector.y));
                 return pointExist;
             }
         }

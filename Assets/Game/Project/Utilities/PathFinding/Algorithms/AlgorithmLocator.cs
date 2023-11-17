@@ -14,6 +14,7 @@ namespace Utilities.AI {
             { new AStar(), new AStarPostSmoothing(), new ThetaStar(), new LazyThetaStar(), new JumpPointSearch(), new FlowfieldPathFinding()};
             MapUpdate();
             Dispatcher.Inst.RegisterListenerEvent(EVENT_ID.MAP_UPDATE, MapUpdate);
+            Dispatcher.Inst.RegisterListenerEvent(EVENT_ID.PLAYER_GRID_POS_UPDATE, PlayerPositionUpdate);
         }
         public override Grid<NodeCell, int>.PathfindingAlgorithm GetService(int id)
         {
@@ -28,5 +29,10 @@ namespace Utilities.AI {
             }
         }
         
+        protected void PlayerPositionUpdate(object position)
+        {
+            //NOTE: Update for Flowlield Pathfinding
+            ((FlowfieldPathFinding)service[5]).IsAlgorithmUpdate = true;
+        }
     }
 }

@@ -1,6 +1,8 @@
+using Project;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 using Utilitys;
 using Utilitys.Timer;
 
@@ -10,6 +12,20 @@ public class OrangePlayer : PlayerBase,ICharacterBase
     float skillTime = 0.1f;
     bool isSkill = false;
     STimer canUseSkill;
+    Map map;
+    Vector2Int currentGridPosition;
+    Vector2Int CurrentGridPosition
+    {
+        get => currentGridPosition;
+        set
+        {
+            if(value != currentGridPosition)
+            {
+                currentGridPosition = value;
+                Dispatcher.Inst.PostEvent(EVENT_ID.PLAYER_GRID_POS_UPDATE, transform.position);
+            }
+        }
+    }
     protected override void Awake(){
         base.Awake();
         player = gameObject;
@@ -21,12 +37,26 @@ public class OrangePlayer : PlayerBase,ICharacterBase
         gameObject.layer = LayerMask.NameToLayer("Player");
         layerMask = LayerMask.GetMask("Player");
         Weapon = GameHelper.FindWeapon(gameObject);
+
+        if (LevelManager.Inst == null) return;
+        map = LevelManager.Inst.Map;
+        (int x, int y) = map.MapGrid.GetGridPosition(transform.position);
+        currentGridPosition = new Vector2Int(x, y);
+        Dispatcher.Inst.PostEvent(EVENT_ID.PLAYER_GRID_POS_UPDATE, transform.position);
     }
 
     void FixedUpdate(){
         if(!isSkill){
             moveModule.SetVelocity(inputModule.MoveKeyBoard * speed);
-        } 
+        }
+        if (map != null)
+        {
+            (int x, int y) = map.MapGrid.GetGridPosition(transform.position);
+            if (x != currentGridPosition.x || y != currentGridPosition.y)
+            {
+                CurrentGridPosition = new Vector2Int(x, y);
+            }
+        }
     }
 
     protected override void Update()

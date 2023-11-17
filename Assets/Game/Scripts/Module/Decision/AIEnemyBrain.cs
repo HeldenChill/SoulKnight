@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utilitys.Timer;
 
-public class AIEnemyBrain : EnemyBase,ICharacterBase
+public class AIEnemyBrain : EnemyBase
 {
     //atribute
     private float timePatrol;
@@ -87,35 +87,7 @@ public class AIEnemyBrain : EnemyBase,ICharacterBase
             }      
             
         }
-    }
-        //get damage
-    public override void GetDamage(int damage){
-        Hp -= damage;
-    }
-    public void ChangeWeapon(GameObject weapon){
-        
-    }
-    private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.layer == LayerMask.NameToLayer("Bullet")){
-            GetDamage(other.GetComponent<Bullet>().Damage);
-        }    
-    }
-        //die
-    protected override void Die(){
-        EventManager.Inst.createNormalReward(transform.position,1);
-        EventManager.Inst.EnemyDie(RoomInID);
-        Destroy(gameObject);
-    }
-
-    
-    //get layer and mask
-    public int GetLayer(){
-        return gameObject.layer;
-    }
-
-    public int GetLayerMask(){
-        return LayerMask.GetMask(LayerMask.LayerToName(GetLayer()));
-    }
+    }    
     //helper function
     
     private bool Detecting(float range,LayerMask layer){

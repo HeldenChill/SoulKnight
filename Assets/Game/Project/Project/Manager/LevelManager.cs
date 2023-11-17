@@ -24,22 +24,22 @@ namespace Project
             Destroy(gameObject);
         }
 
-        private void Start()
-        {
-            InitLevel();
-        }
-        private void InitLevel()
-        {
-            Agent.transform.position = map.MapGrid.GetGridCell(2, 6).WorldPos;
-        }
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mousePos = GridUtilities.GetMouseWorldPosition();
-                Agent.SetDestination(mousePos);
-            }
-        }
+        //private void Start()
+        //{
+        //    InitLevel();
+        //}
+        //private void InitLevel()
+        //{
+        //    Agent.transform.position = map.MapGrid.GetGridCell(2, 6).WorldPos;
+        //}
+        //private void Update()
+        //{
+        //    if (Input.GetMouseButtonDown(0))
+        //    {
+        //        Vector3 mousePos = GridUtilities.GetMouseWorldPosition();
+        //        Agent.SetDestination(mousePos);
+        //    }
+        //}
 
     }
 }
