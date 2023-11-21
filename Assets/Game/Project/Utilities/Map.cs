@@ -14,13 +14,13 @@ namespace Project
         Grid<NodeCell, int>.DebugGrid debug;
 
         private Mesh mesh;
-        private Obstance[] obstances;
+        private Obstacle[] obstances;
         public Grid<NodeCell, int> MapGrid => grid;
         void Awake()
         {
             grid = new Grid<NodeCell, int>(56, 44, 2, new Vector2(-56, -45), () => new NodeCell());
             debug = new Grid<NodeCell, int>.DebugGrid();
-            obstances = FindObjectsOfType<Obstance>();
+            obstances = FindObjectsOfType<Obstacle>();
             UpdateObstance();
 
             mesh = new Mesh();
@@ -53,7 +53,7 @@ namespace Project
         }
         private void UpdateObstance()
         {
-            foreach (Obstance obstance in obstances)
+            foreach (Obstacle obstance in obstances)
             {
                 NodeCell node1 = grid.GetGridCell(obstance.PointExists[3]);
                 NodeCell node2 = grid.GetGridCell(obstance.PointExists[0]);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Utilities.AI
 {
-    public class Obstance : MonoBehaviour
+    public class Obstacle : MonoBehaviour
     {
         [SerializeField]
         BoxCollider2D Collider2D;
