@@ -133,6 +133,7 @@ namespace Utilities.AI
                     cell.HCost = CONSTANTS.WALL_COST;
                 }
             }
+            IsAlgorithmUpdate = true;
         }
         protected virtual List<NodeCell> CalculatePath(NodeCell startNode)
         {

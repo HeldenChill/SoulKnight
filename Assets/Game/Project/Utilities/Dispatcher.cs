@@ -102,7 +102,8 @@ namespace Utilities
     public enum EVENT_ID
     {
         MAP_UPDATE = 0,
-        PLAYER_GRID_POS_UPDATE = 1,       
+        PLAYER_GRID_POS_UPDATE = 1,     
+        ENEMY_COUNT_CHANGE = 2,
     }
 
 }

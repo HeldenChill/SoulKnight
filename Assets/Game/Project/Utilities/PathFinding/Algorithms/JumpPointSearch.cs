@@ -13,23 +13,7 @@ namespace Utilities.AI
         {
             this.endNode = endNode;
             this.startScanCell = currentNode;
-            foreach (NodeCell neighbourNode in GetNeighbourNodes(currentNode))
-            {
-                if (closeList.Contains(neighbourNode))
-                    continue;
-                if (!neighbourNode.IsWalkable)
-                {
-                    closeList.Add(neighbourNode);
-                    continue;
-                }
-
-                UpdateFCost(endNode, currentNode, neighbourNode);
-
-                if (!openList.Contains(neighbourNode))
-                {
-                    openList.Add(neighbourNode);
-                }
-            }
+            base.ScanningNeighbour(endNode, currentNode);
         }
 
         protected override List<NodeCell> GetNeighbourNodes(NodeCell currentNode)

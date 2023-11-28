@@ -7,13 +7,15 @@ using Utilities;
 
 public class ChasingEnemy : EnemyBase, IPoolUnit
 {
+    protected static int Count = 0;
     [SerializeField]
     MovingAgent movingAgent;
     protected override void Awake()
     {
         base.Awake();
         movingAgent.Speed = speed;
-        
+        Count++;
+        Dispatcher.Inst.PostEvent(EVENT_ID.ENEMY_COUNT_CHANGE, Count);
     }
     private void ChasingPlayer(object position)
     {
@@ -36,5 +38,7 @@ public class ChasingEnemy : EnemyBase, IPoolUnit
     protected override void Die()
     {
         LevelManager.Inst.PushEnemy(this);
+        Count--;
+        Dispatcher.Inst.PostEvent(EVENT_ID.ENEMY_COUNT_CHANGE, Count);
     }
 }
