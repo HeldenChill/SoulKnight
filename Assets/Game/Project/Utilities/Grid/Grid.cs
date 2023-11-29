@@ -21,7 +21,7 @@ namespace Utilities.AI
         public int Height => height;
         public CONSTANTS.PLANE PlaneType => planeType;
         public T[,] GridArray => gridArray;
-
+        //private List<T> LineOfSightCacheList = new List<T>();
         public Grid(int width, int height, float cellSize, Vector3 originPosition = default, Func<GridCell<D>> ConstructorCell = null, CONSTANTS.PLANE planeType = CONSTANTS.PLANE.XY)
         {
             this.width = width;
@@ -174,8 +174,8 @@ namespace Utilities.AI
                 for (int i = startCellX; i != endCellX; i += Math.Sign(endCellX - startCellX))
                 {
                     //DEV: Index out of range here
-                    int posX = Mathf.RoundToInt((i - startCellX) * rate + startCellY);
-                    cells.Add(gridArray[posX, i]);
+                    int posY = Mathf.RoundToInt((i - startCellX) * rate + startCellY);
+                    cells.Add(gridArray[i, posY]);
                 }
             }
             cells.Add(gridArray[endCellX, endCellY]);
@@ -187,6 +187,7 @@ namespace Utilities.AI
         public abstract class PathfindingAlgorithm
         {
             public bool IsGridUpdate = false;
+            public List<NodeCell> CacheList;
             protected Grid<T, D> grid;
             public abstract List<T> FindPath(int startX, int startY, int endX, int endY, Grid<T, D> grid);
             public virtual void AlgorithmUpdate(Grid<T, D> grid = null) { }

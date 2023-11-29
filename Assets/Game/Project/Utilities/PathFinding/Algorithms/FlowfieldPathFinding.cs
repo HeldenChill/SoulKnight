@@ -137,14 +137,15 @@ namespace Utilities.AI
         }
         protected virtual List<NodeCell> CalculatePath(NodeCell startNode)
         {
-            List<NodeCell> path = new List<NodeCell> { startNode };
+            CacheList.Clear();
+            CacheList.Add(startNode);
             NodeCell currentNode = startNode;
             while (currentNode.Parent != null)
             {
-                path.Add(currentNode.Parent);
+                CacheList.Add(currentNode.Parent);
                 currentNode = currentNode.Parent;
             }
-            return path;
+            return CacheList;
         }
         protected virtual List<NodeCell> GetNeighbourNodes(NodeCell currentNode)
         {

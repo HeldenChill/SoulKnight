@@ -66,7 +66,7 @@ public class PlayerBaseProfile
         }
     }
 
-    public string getInfo(){
+    public string GetInfo(){
         string res = "";
         res += maxHp.ToString() + " " + maxMana.ToString() + " " + maxShield.ToString() 
             + " " + hp.ToString() + " " + mana.ToString() + " " + shield.ToString();
@@ -74,7 +74,7 @@ public class PlayerBaseProfile
         return res;
     }
 
-    public void setMaxAll(){
+    public void SetMaxAll(){
         Hp = maxHp;
         Mana = maxMana;
         Shield = maxShield;

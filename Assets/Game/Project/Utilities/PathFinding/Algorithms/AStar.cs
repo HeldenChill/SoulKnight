@@ -126,15 +126,16 @@ namespace Utilities.AI
         }
         protected virtual List<NodeCell> CalculatePath(NodeCell endNode)
         {
-            List<NodeCell> path = new List<NodeCell>{endNode};
+            CacheList.Clear();
+            CacheList.Add(endNode);
             NodeCell currentNode = endNode;
             while (currentNode.Parent != null)
             {
-                path.Add(currentNode.Parent);
+                CacheList.Add(currentNode.Parent);
                 currentNode = currentNode.Parent;
             }
-            path.Reverse();
-            return path;
+            CacheList.Reverse();
+            return CacheList;
         }
         protected int CalculateDistanceCost(NodeCell a, NodeCell b)
         {

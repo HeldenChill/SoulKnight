@@ -8,7 +8,7 @@ public class Dungeon : MonoBehaviour
     [SerializeField]private CameraFollow cameraFollow;
     void Start()
     {
-        Debug.Log(Scenes.current.playerProfile.getInfo()); 
+        Debug.Log(Scenes.current.playerProfile.GetInfo()); 
         GameObject playerInstance = Instantiate(player,new Vector3(0,0,-10),Quaternion.identity);
         playerInstance.GetComponent<PlayerBase>().setPlayerBaseProfile(Scenes.current.playerProfile);
         cameraFollow.followedObject = playerInstance.transform;

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/Pathfinding.unity
     guid: 30aa2b6a9f0bae04f8c6cc5b2af7bdaa
+  - enabled: 1
+    path: Assets/Game/Scenes/PathfindingNavMesh.unity
+    guid: a3bd5690121411a4489850f75426d9df
   m_configObjects: {}

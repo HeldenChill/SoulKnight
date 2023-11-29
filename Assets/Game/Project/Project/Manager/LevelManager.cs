@@ -18,6 +18,8 @@ namespace Project
         Transform[] spawnPositions;
         [SerializeField]
         GameObject enemy;
+        [SerializeField]
+        float spawnTime = 0.25f;
 
         List<ChasingEnemy> enemyPools = new List<ChasingEnemy>();
         STimer spawnTimer;
@@ -39,7 +41,7 @@ namespace Project
         }
         private void InitLevel()
         {
-            spawnTimer.Start(1, SpawnEnemy, true);
+            spawnTimer.Start(spawnTime, SpawnEnemy, true);
             void SpawnEnemy()
             {
                 ChasingEnemy enemyObj = PopEnemy() as ChasingEnemy;

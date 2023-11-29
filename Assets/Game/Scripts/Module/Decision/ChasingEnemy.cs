@@ -14,8 +14,7 @@ public class ChasingEnemy : EnemyBase, IPoolUnit
     {
         base.Awake();
         movingAgent.Speed = speed;
-        Count++;
-        Dispatcher.Inst.PostEvent(EVENT_ID.ENEMY_COUNT_CHANGE, Count);
+        
     }
     private void ChasingPlayer(object position)
     {
@@ -28,6 +27,8 @@ public class ChasingEnemy : EnemyBase, IPoolUnit
     {
         Dispatcher.Inst.RegisterListenerEvent(EVENT_ID.PLAYER_GRID_POS_UPDATE, ChasingPlayer);
         ChasingPlayer(Dispatcher.Inst.GetLastParamEvent(EVENT_ID.PLAYER_GRID_POS_UPDATE));
+        Count++;
+        Dispatcher.Inst.PostEvent(EVENT_ID.ENEMY_COUNT_CHANGE, Count);
     }
 
     public void OnDespawn()

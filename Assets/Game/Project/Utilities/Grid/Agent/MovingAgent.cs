@@ -29,6 +29,7 @@ namespace Project
         }
         Grid<NodeCell, int>.PathfindingAlgorithm algorithm;
         Queue<Vector2> steps = new Queue<Vector2>();
+        List<NodeCell> cacheList = new List<NodeCell>();
         Vector2 destination;
         Vector2 direction = new Vector2();
         bool isMoving = false;
@@ -76,6 +77,7 @@ namespace Project
 
         private void FindPath(int startX, int startY, int desX, int desY)
         {
+            algorithm.CacheList = cacheList;
             List<NodeCell> path = algorithm.FindPath(startX, startY, desX, desY, Map.MapGrid);
             //map.ShowFCost();
             if (path == null) return;
