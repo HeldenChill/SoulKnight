@@ -7,7 +7,7 @@ using Utilities;
 
 public class ChasingEnemy : EnemyBase, IPoolUnit
 {
-    protected static int Count = 0;
+    public static int Count = 0;
     [SerializeField]
     MovingAgent movingAgent;
     protected override void Awake()

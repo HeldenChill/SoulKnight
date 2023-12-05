@@ -13423,6 +13423,8 @@ MonoBehaviour:
   - {fileID: 1334218414}
   - {fileID: 609499889}
   enemy: {fileID: 7332502929876082086, guid: 9958d56544bf83942ab84b0cc9be14a4, type: 3}
+  spawnTime: 0.1
+  enemyNum: 60
 --- !u!1 &1913107568
 GameObject:
   m_ObjectHideFlags: 0

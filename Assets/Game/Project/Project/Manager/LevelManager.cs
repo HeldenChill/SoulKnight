@@ -20,6 +20,8 @@ namespace Project
         GameObject enemy;
         [SerializeField]
         float spawnTime = 0.25f;
+        [SerializeField]
+        float enemyNum = 10;
 
         List<ChasingEnemy> enemyPools = new List<ChasingEnemy>();
         STimer spawnTimer;
@@ -48,6 +50,11 @@ namespace Project
                 int index = Random.Range(0, spawnPositions.Length);
                 enemyObj.transform.position = spawnPositions[index].position;
                 enemyObj.OnInit();
+
+                if(ChasingEnemy.Count >= enemyNum)
+                {
+                    spawnTimer.Stop();
+                }
             }
         }
 
